@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Economics 1005 — Practice Quiz</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 0 20px; }
+    .question { display: none; }
+    .question.active { display: block; }
+    .answers { list-style: none; padding: 0; }
+    .answers li { margin: 8px 0; }
+    button { margin-top: 20px; padding: 10px 20px; cursor: pointer; }
+    #result { text-align: center; }
+    .correct-answer { color: green; }
+    .wrong-answer { color: red; }
+    #timer { 
+      position: fixed; 
+      top: 20px; 
+      right: 20px; 
+      background: #f0f0f0; 
+      padding: 15px 25px; 
+      border-radius: 8px; 
+      font-size: 18px; 
+      font-weight: bold; 
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    #timer.warning { background: #ffeb3b; }
+    #timer.danger { background: #f44336; color: white; }
+  </style>
+</head>
+<body>
+
+  <h1>No Limits Tutorials Service ECON1005 FINALS PRACTICE MCQ</h1>
+  
+  <div id="timer">Time: 30:00</div>
+
+  <div id="quiz-container"></div>
+
+  <script>
+    const questions = [
+      {
+        q: "1. What would increase the margin of error?",
+        choices: [
+          "A. Decrease confidence level",
+          "B. None",
+          "C. Increase population standard deviation",
+          "D. Decrease population standard deviation"
+        ],
+        answer: 2
+      },
+      {
+        q: "2. A Ministry of Health survey divides Jamaica into 14 parishes. From each parish, 3 clinics are randomly selected. Then, 10 patients are randomly chosen from each selected clinic to participate in a national health study.",
+        choices: [
+          "A. Census",
+          "B. Stratified Random Sample",
+          "C. Simple Random Sample",
+          "D. Cluster Sample",
+          "E. Multistage Sample"
+        ],
+        answer: 4
+      },
+      {
+        q: "3. A university wants to collect data from every registered student in their system to assess the impact of online exams on GPA.",
+        choices: [
+          "A. Census",
+          "B. Stratified Random Sample",
+          "C. Simple Random Sample",
+          "D. Cluster Sample",
+          "E. Multistage Sample"
+        ],
+        answer: 0
+      },
+      {
+        q: "4. A research team classifies farmers based on the type of crops they grow (sugarcane, yam, banana, or coffee). They randomly select 20 farmers from each crop category for a study on climate change adaptation.",
+        choices: [
+          "A. Census",
+          "B. Stratified Random Sample",
+          "C. Simple Random Sample",
+          "D. Cluster Sample",
+          "E. Multistage Sample"
+        ],
+        answer: 1
+      },
+      {
+        q: "5. A government agency randomly selects 5 high schools across Jamaica and surveys all students in those schools about their views on mandatory national service.",
+        choices: [
+          "A. Census",
+          "B. Stratified Random Sample",
+          "C. Simple Random Sample",
+          "D. Cluster Sample",
+          "E. Multistage Sample"
+        ],
+        answer: 3
+      },
+      {
+        q: "6. A surveyor obtains a complete list of all small businesses registered in Jamaica. Using a random number generator, she selects 250 businesses for a study on financing and loan access.",
+        choices: [
+          "A. Census",
+          "B. Stratified Random Sample",
+          "C. Simple Random Sample",
+          "D. Cluster Sample",
+          "E. Multistage Sample"
+        ],
+        answer: 2
+      },
+      {
+        q: "7. Brandon owns a business that delivers fresh produce. The weekly revenue from sales is right-skewed, with a mean of $45,000 and a standard deviation of $5,200. If a random sample of 49 weeks is taken, the sampling distribution of the sample mean:",
+        choices: [
+          "A. is right skewed with mean $45,000 and standard deviation $5,200",
+          "B. is right skewed with mean $45,000 and standard deviation $742.86",
+          "C. is normal with mean $45,000 and standard deviation $5,200",
+          "D. is normal with mean $45,000 and standard deviation $742.86",
+          "E. cannot be determined using the given information."
+        ],
+        answer: 3
+      },
+      {
+        q: "8. National ID number used to identify individuals in a government database",
+        choices: [
+          "A. Nominal",
+          "B. Ordinal",
+          "C. Interval",
+          "D. Ratio"
+        ],
+        answer: 0
+      },
+      {
+        q: "9. Performance rating of athletes in a sports competition (Excellent, Good, Fair, Poor)",
+        choices: [
+          "A. Nominal",
+          "B. Ordinal",
+          "C. Interval",
+          "D. Ratio"
+        ],
+        answer: 1
+      },
+      {
+        q: "10. Number of years an employee has worked with a company",
+        choices: [
+          "A. Nominal",
+          "B. Ordinal",
+          "C. Interval",
+          "D. Ratio"
+        ],
+        answer: 3
+      },
+      {
+        q: "11. Random samples of size n were selected from a population with a known standard deviation. How is the standard deviation of the sampling distribution of the sample mean affected if the sample size is increased from 64 to 256?",
+        choices: [
+          "A. It is multiplied by 2",
+          "B. It is divided by 4",
+          "C. It is divided by 2",
+          "D. It remains the same",
+          "E. It is multiplied by 4"
+        ],
+        answer: 2
+      },
+      {
+        q: "12. The average number of patients seen daily at a medical clinic is 84, with a standard deviation of 10.2. You want to calculate the probability that a sample of 40 days will produce a mean greater than 87 patients.",
+        choices: [
+          "A. Probability Distribution",
+          "B. Sampling Distribution",
+          "C. Confidence Interval",
+          "D. Hypothesis Test",
+          "E. Sample Size Calculation"
+        ],
+        answer: 1
+      },
+      {
+        q: "13. The Ministry of Education believes that students today spend more time on mobile devices than the previous average of 4 hours daily. A study of 100 high school students is done to test whether today's average exceeds this.",
+        choices: [
+          "A. Probability Distribution",
+          "B. Sampling Distribution",
+          "C. Confidence Interval",
+          "D. Hypothesis Test",
+          "E. Sample Size Calculation"
+        ],
+        answer: 3
+      },
+      {
+        q: "14. The average commute time in Kingston is 38 minutes with a standard deviation of 6 minutes. You want to determine the probability that a randomly selected person commutes more than 42 minutes.",
+        choices: [
+          "A. Probability Distribution",
+          "B. Sampling Distribution",
+          "C. Confidence Interval",
+          "D. Hypothesis Test",
+          "E. Sample Size Calculation"
+        ],
+        answer: 0
+      },
+      {
+        q: "15. Which measures would be used to describe the income for nurses in Jamaica?",
+        choices: [
+          "A. Mean and Median",
+          "B. Median and IQR",
+          "C. IQR and Mode",
+          "D. Standard deviation and Mean"
+        ],
+        answer: 1
+      },
+      {
+        q: "16. A polling agency wants to estimate the proportion of Jamaicans who support a new energy policy. They want their estimate to be within ±2.5% of the true value with 95% confidence. They must decide how many people to survey.",
+        choices: [
+          "A. Probability Distribution",
+          "B. Sampling Distribution",
+          "C. Confidence Interval",
+          "D. Hypothesis Test",
+          "E. Sample Size Calculation"
+        ],
+        answer: 4
+      },
+      {
+        q: "17. Suppose, to create this estimate, Musk will allow an error of 3 percent with 90 percent confidence. What sample size should he use?",
+        choices: [
+          "A. 14",
+          "B. 55",
+          "C. 556",
+          "D. 737",
+          "E. 752"
+        ],
+        answer: 4
+      },
+      {
+        q: "18. According to the Inland Revenue Service, 60 percent of Jamaican companies pay no taxes at the end of a financial year. Suppose a research team took a random sample of 300 Jamaican companies. If the team wanted to determine the probability that the sample proportion was greater than 62 percent, the Z value (to 4 decimal places) to be used to calculate this probability is:",
+        choices: [
+          "A. −0.7071",
+          "B. −0.7137",
+          "C. 0.6200",
+          "D. 0.7071",
+          "E. 0.7137"
+        ],
+        answer: 3
+      },
+      {
+        q: "19. Cam‑Ron just began a new job as a sales representative in a very competitive company. The company policy dictates that for new sales representatives to be considered for permanent employment, they must, on average, close deals that are on average more than US$1000. It is also known that the distribution of deals is normal with a standard deviation of US$120. Suppose Cam‑Ron's probation period is coming to an end and the company wanted to determine if she should be made a permanent sales representative. Based on her performance, a sample of 16 of Cam-Ron's sales deals yielded an average of US$1080. If the company wanted to predict the true average of Cam‑Ron's sales deals within ±US$15, how many of her sales deals should they sample?",
+        choices: [
+          "A. 67",
+          "B. 173",
+          "C. 174",
+          "D. 245",
+          "E. 246"
+        ],
+        answer: 4
+      },
+      {
+        q: "20. Cam‑Ron just began a new job as a sales representative in a very competitive company. The company policy dictates that for new sales representatives to be considered for permanent employment, they must, on average, close deals that are on average more than US$1000. It is also known that the distribution of deals is normal with a standard deviation of US$120. Suppose Cam‑Ron's probation period is coming to an end and the company wanted to determine if she should be made a permanent sales representative. Based on her performance, a sample of 16 of Cam-Ron's sales deals yielded an average of US$1080. What would be the appropriate alternative hypothesis?",
+        choices: [
+          "A. Hₐ: x̄ > 1080",
+          "B. Hₐ: μ > 1000",
+          "C. Hₐ: μ₀ > 1000",
+          "D. Hₐ: μ₀ > 1080",
+          "E. Hₐ: x̄ > 1000"
+        ],
+        answer: 1
+      },
+      {
+        q: "21. …The test statistic for the test is:",
+        choices: [
+          "A. z = −2.67",
+          "B. z = −0.67",
+          "C. z = 0.67",
+          "D. z = 2.67"
+        ],
+        answer: 3
+      },
+      {
+        q: "22. If the p‑value for yet another sample of 16 was 0.0317, the company should:",
+        choices: [
+          "A. not make Cam‑Ron a permanent member of the sales team because the null hypothesis was rejected.",
+          "B. not make Cam‑Ron a permanent member of the sales team because the null hypothesis was accepted.",
+          "C. make Cam‑Ron a permanent member of the sales team because the alternative hypothesis was accepted.",
+          "D. make Cam‑Ron a permanent member of the sales team because the null hypothesis was not rejected.",
+          "E. make Cam‑Ron a permanent member of the sales team because the null hypothesis was rejected."
+        ],
+        answer: 4
+      }
+    ];
+
+    let current = 0;
+    let userAnswers = [];
+    let timeLeft = 1800; // 30 minutes in seconds
+    let timerInterval;
+    let quizEnded = false;
+
+    const container = document.getElementById('quiz-container');
+    const timerDisplay = document.getElementById('timer');
+
+    // Timer function
+    function startTimer() {
+      timerInterval = setInterval(() => {
+        if (quizEnded) {
+          clearInterval(timerInterval);
+          return;
+        }
+
+        timeLeft--;
+        
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        timerDisplay.textContent = `Time: ${minutes}:${seconds.toString().padStart(2, '0')}`;
+        
+        // Warning at 5 minutes
+        if (timeLeft <= 300 && timeLeft > 60) {
+          timerDisplay.className = 'warning';
+        }
+        // Danger at 1 minute
+        if (timeLeft <= 60) {
+          timerDisplay.className = 'danger';
+        }
+        
+        // Time's up!
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          quizEnded = true;
+          autoSubmitQuiz();
+        }
+      }, 1000);
+    }
+
+    function autoSubmitQuiz() {
+      // Fill remaining questions with -1 (no answer)
+      for (let i = 0; i < questions.length; i++) {
+        if (userAnswers[i] === undefined) {
+          userAnswers[i] = -1;
+        }
+      }
+      showResult();
+    }
+
+    function showQuestion(index) {
+      if (quizEnded) return;
+      
+      container.innerHTML = '';
+      const qObj = questions[index];
+      const div = document.createElement('div');
+      div.className = 'question active';
+      div.innerHTML = `
+        <h2>${qObj.q}</h2>
+        <ul class="answers">
+          ${qObj.choices.map((c,i) => `<li><label><input type="radio" name="choice" value="${i}"> ${c}</label></li>`).join('')}
+        </ul>
+        <button id="next"> ${ index === questions.length - 1 ? 'Finish' : 'Next' } </button>
+      `;
+      container.appendChild(div);
+
+      document.getElementById('next').onclick = () => {
+        const selected = container.querySelector('input[name="choice"]:checked');
+        if (!selected) {
+          alert('Please select an answer!');
+          return;
+        }
+        userAnswers[index] = parseInt(selected.value, 10);
+        if (index + 1 < questions.length) {
+          current++;
+          showQuestion(current);
+        } else {
+          quizEnded = true;
+          clearInterval(timerInterval);
+          showResult();
+        }
+      };
+    }
+
+    function showResult() {
+      timerDisplay.style.display = 'none';
+      container.innerHTML = '';
+      let score = 0;
+      const resultDiv = document.createElement('div');
+      resultDiv.id = 'result';
+      
+      const resultList = document.createElement('ul');
+      questions.forEach((qObj, i) => {
+        const li = document.createElement('li');
+        const correct = qObj.answer;
+        const user = userAnswers[i];
+        if (user === correct) {
+          score++;
+          li.innerHTML = `Q${i+1}: ✅ Correct`;
+          li.className = 'correct-answer';
+        } else if (user === -1) {
+          li.innerHTML = `Q${i+1}: ⏱️ Not answered (Time's up!) — Correct answer: ${qObj.choices[correct]}`;
+          li.className = 'wrong-answer';
+        } else {
+          li.innerHTML = `Q${i+1}: ❌ Wrong — Correct answer: ${qObj.choices[correct]}`;
+          li.className = 'wrong-answer';
+        }
+        resultList.appendChild(li);
+      });
+
+      resultDiv.innerHTML = `<h2>Results</h2><p>Your score: ${score} / ${questions.length}</p>`;
+      
+      // Emoji feedback
+      const pct = score / questions.length;
+      let emoji = '😐';
+      if (pct === 1) emoji = '🎉';
+      else if (pct >= 0.8) emoji = '🙂';
+      else if (pct >= 0.5) emoji = '😐';
+      else emoji = '😢';
+
+      resultDiv.innerHTML += `<p>Your grade: ${emoji}</p>`;
+      resultDiv.appendChild(resultList);
+
+      container.appendChild(resultDiv);
+    }
+
+    // Start quiz
+    startTimer();
+    showQuestion(current);
+  </script>
+
+</body>
+</html>
