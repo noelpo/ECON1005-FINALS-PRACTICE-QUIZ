@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>No Limits Tutorial Service ECON1005 FINAL  MCQ PREP</title>
+  <title>Economics 1005 — Practice Quiz</title>
   <style>
     * {
       margin: 0;
@@ -19,6 +19,7 @@
       padding: 20px;
       position: relative;
       overflow-x: hidden;
+      transition: background 0.8s ease;
     }
     
     body::before {
@@ -44,12 +45,23 @@
     h1 {
       text-align: center;
       color: white;
-      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-size: clamp(1.2rem, 3vw, 2rem);
       margin-bottom: 30px;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
       animation: fadeInDown 0.8s ease;
       position: relative;
       z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    
+    #logo {
+      height: clamp(40px, 8vw, 80px);
+      width: auto;
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
     }
     
     @keyframes fadeInDown {
@@ -157,6 +169,30 @@
     
     button:active {
       transform: translateY(0);
+    }
+    
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    
+    .nav-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    
+    .nav-buttons button {
+      flex: 1;
+      min-width: 100px;
+    }
+    
+    .arrow-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
     
     #result { 
@@ -276,7 +312,10 @@
 </head>
 <body>
 
-  <h1>No Limits Tutorial Service ECON1005 FINAL  MCQ PREP</h1>
+  <h1>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="NL Logo" id="logo" style="display:none;">
+    <span>No Limits Tutorials Service ECON1005 FINALS PRACTICE MCQ</span>
+  </h1>
   
   <div id="timer">Time: 30:00</div>
 
@@ -519,7 +558,91 @@
           "E. make Cam‑Ron a permanent member of the sales team because the null hypothesis was rejected."
         ],
         answer: 4
+      },
+      {
+        q: "23. Elon Musk's Space X programme is getting closer to allowing civilians to take a trip to Mars. To determine the interest in people wanting to visit Mars, Musk conducts a survey. From this survey of 763 adults, 329 stated that they would like to visit Mars. We would like to use the information to create an estimate for the true proportion of persons who would like to take a trip to Mars. p = ______",
+        choices: [
+          "A. 329",
+          "B. 0.43",
+          "C. 763",
+          "D. 1.96",
+          "E. unknown"
+        ],
+        answer: 4
+      },
+      {
+        q: "24. Elon Musk's Space X programme is getting closer to allowing civilians to take a trip to Mars. To determine the interest in people wanting to visit Mars, Musk conducts a survey. From this survey of 763 adults, 329 stated that they would like to visit Mars. We would like to use the information to create an estimate for the true proportion of persons who would like to take a trip to Mars. p̂ = ______",
+        choices: [
+          "A. 329",
+          "B. 0.43",
+          "C. 763",
+          "D. 1.96",
+          "E. unknown"
+        ],
+        answer: 1
+      },
+      {
+        q: "25. Elon Musk's Space X programme is getting closer to allowing civilians to take a trip to Mars. To determine the interest in people wanting to visit Mars, Musk conducts a survey. From this survey of 763 adults, 329 stated that they would like to visit Mars. We would like to use the information to create an estimate for the true proportion of persons who would like to take a trip to Mars. X = ______",
+        choices: [
+          "A. 329",
+          "B. 0.43",
+          "C. 763",
+          "D. 1.96"
+        ],
+        answer: 0
+      },
+      {
+        q: "26. Given the information above, which of the following validity requirements is violated?",
+        choices: [
+          "A. np ≥ 10 and n(1 − p) ≥ 10",
+          "B. np̂ ≥ 10 and n(1 − p̂) ≥ 10",
+          "C. The population is at least 20 times as large as the sample",
+          "D. More than one condition is violated",
+          "E. No condition is violated"
+        ],
+        answer: 4
+      },
+      {
+        q: "27. After some calculations, a statistician stated that the 95 percent confidence interval for average income for employees in a particular company lies between $100,000 and $400,000. Does this mean that:",
+        choices: [
+          "A. 95 percent of all the employees in the company earn between $100,000 and $400,000",
+          "B. If 100 confidence intervals are constructed using the same sample size, then 95 of them will include the population average",
+          "C. 95 percent of those in the sample used to create the confidence interval earn between $100,000 and $400,000",
+          "D. If 95 samples are taken, their average will be between $100,000 and $400,000",
+          "E. If 100 confidence intervals are constructed using the same sample size, then 95 of them will include the sample average"
+        ],
+        answer: 1
       }
+    ];
+
+    const backgroundGradients = [
+      'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+      'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+      'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+      'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+      'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+      'linear-gradient(135deg, #30cfd0 0%, #330867 100%)',
+      'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
+      'linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%)',
+      'linear-gradient(135deg, #ee9ca7 0%, #ffdde1 100%)',
+      'linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%)',
+      'linear-gradient(135deg, #cc2b5e 0%, #753a88 100%)',
+      'linear-gradient(135deg, #42275a 0%, #734b6d 100%)',
+      'linear-gradient(135deg, #bdc3c7 0%, #2c3e50 100%)',
+      'linear-gradient(135deg, #de6262 0%, #ffb88c 100%)',
+      'linear-gradient(135deg, #06beb6 0%, #48b1bf 100%)',
+      'linear-gradient(135deg, #eb3349 0%, #f45c43 100%)',
+      'linear-gradient(135deg, #dd5e89 0%, #f7bb97 100%)',
+      'linear-gradient(135deg, #56ab2f 0%, #a8e063 100%)',
+      'linear-gradient(135deg, #eecda3 0%, #ef629f 100%)',
+      'linear-gradient(135deg, #16222a 0%, #3a6073 100%)',
+      'linear-gradient(135deg, #c94b4b 0%, #4b134f 100%)',
+      'linear-gradient(135deg, #fc4a1a 0%, #f7b733 100%)',
+      'linear-gradient(135deg, #4776e6 0%, #8e54e9 100%)',
+      'linear-gradient(135deg, #e53935 0%, #e35d5b 100%)',
+      'linear-gradient(135deg, #005c97 0%, #363795 100%)',
+      'linear-gradient(135deg, #f857a6 0%, #ff5858 100%)',
+      'linear-gradient(135deg, #a73737 0%, #7a2828 100%)'
     ];
 
     let current = 0;
@@ -576,6 +699,9 @@
     function showQuestion(index) {
       if (quizEnded) return;
       
+      // Change background color for each question
+      document.body.style.background = backgroundGradients[index % backgroundGradients.length];
+      
       container.innerHTML = '';
       const qObj = questions[index];
       const div = document.createElement('div');
@@ -583,12 +709,32 @@
       div.innerHTML = `
         <h2>${qObj.q}</h2>
         <ul class="answers">
-          ${qObj.choices.map((c,i) => `<li><label><input type="radio" name="choice" value="${i}"> ${c}</label></li>`).join('')}
+          ${qObj.choices.map((c,i) => `<li><label><input type="radio" name="choice" value="${i}" ${userAnswers[index] === i ? 'checked' : ''}> ${c}</label></li>`).join('')}
         </ul>
-        <button id="next"> ${ index === questions.length - 1 ? 'Finish' : 'Next' } </button>
+        <div class="nav-buttons">
+          <button id="prev" class="arrow-btn" ${index === 0 ? 'disabled' : ''}>
+            ← Previous
+          </button>
+          <button id="next" class="arrow-btn">
+            ${index === questions.length - 1 ? 'Finish Quiz' : 'Next →'}
+          </button>
+        </div>
       `;
       container.appendChild(div);
 
+      // Previous button
+      if (index > 0) {
+        document.getElementById('prev').onclick = () => {
+          const selected = container.querySelector('input[name="choice"]:checked');
+          if (selected) {
+            userAnswers[index] = parseInt(selected.value, 10);
+          }
+          current--;
+          showQuestion(current);
+        };
+      }
+
+      // Next button
       document.getElementById('next').onclick = () => {
         const selected = container.querySelector('input[name="choice"]:checked');
         if (!selected) {
