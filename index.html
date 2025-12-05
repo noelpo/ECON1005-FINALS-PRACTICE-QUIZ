@@ -5,33 +5,278 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Economics 1005 — Practice Quiz</title>
   <style>
-    body { font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 0 20px; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background-attachment: fixed;
+      padding: 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(252, 70, 107, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(99, 102, 241, 0.2) 0%, transparent 50%);
+      animation: gradientShift 15s ease infinite;
+      pointer-events: none;
+    }
+    
+    @keyframes gradientShift {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.1); }
+    }
+    
+    h1 {
+      text-align: center;
+      color: white;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      animation: fadeInDown 0.8s ease;
+      position: relative;
+      z-index: 1;
+    }
+    
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    #quiz-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: clamp(20px, 5vw, 40px);
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      animation: fadeInUp 0.8s ease;
+      position: relative;
+      z-index: 1;
+    }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
     .question { display: none; }
-    .question.active { display: block; }
-    .answers { list-style: none; padding: 0; }
-    .answers li { margin: 8px 0; }
-    button { margin-top: 20px; padding: 10px 20px; cursor: pointer; }
-    #result { text-align: center; }
-    .correct-answer { color: green; }
-    .wrong-answer { color: red; }
+    .question.active { 
+      display: block;
+      animation: slideIn 0.5s ease;
+    }
+    
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    
+    .question h2 {
+      color: #333;
+      font-size: clamp(1rem, 3vw, 1.3rem);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    
+    .answers { 
+      list-style: none; 
+      padding: 0; 
+    }
+    
+    .answers li { 
+      margin: 12px 0;
+      transition: transform 0.2s ease;
+    }
+    
+    .answers li:hover {
+      transform: translateX(5px);
+    }
+    
+    .answers label {
+      display: block;
+      padding: 15px;
+      background: #f8f9fa;
+      border: 2px solid #e9ecef;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: clamp(0.9rem, 2vw, 1rem);
+    }
+    
+    .answers label:hover {
+      background: #e7f3ff;
+      border-color: #667eea;
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+    }
+    
+    .answers input[type="radio"]:checked + label,
+    .answers label:has(input[type="radio"]:checked) {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-color: #667eea;
+      font-weight: bold;
+    }
+    
+    .answers input[type="radio"] {
+      margin-right: 10px;
+    }
+    
+    button { 
+      margin-top: 20px; 
+      padding: 12px 30px;
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+    
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    }
+    
+    button:active {
+      transform: translateY(0);
+    }
+    
+    #result { 
+      text-align: center;
+    }
+    
+    #result h2 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+    }
+    
+    #result p {
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
+      margin: 15px 0;
+      color: #555;
+    }
+    
+    #result ul {
+      text-align: left;
+      max-width: 600px;
+      margin: 20px auto;
+    }
+    
+    #result li {
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 8px;
+      background: #f8f9fa;
+      font-size: clamp(0.85rem, 2vw, 1rem);
+    }
+    
+    .correct-answer { 
+      color: #28a745;
+      font-weight: bold;
+      border-left: 4px solid #28a745;
+    }
+    
+    .wrong-answer { 
+      color: #dc3545;
+      border-left: 4px solid #dc3545;
+    }
+    
     #timer { 
       position: fixed; 
       top: 20px; 
       right: 20px; 
-      background: #f0f0f0; 
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
       padding: 15px 25px; 
-      border-radius: 8px; 
-      font-size: 18px; 
+      border-radius: 15px; 
+      font-size: clamp(1rem, 3vw, 1.2rem);
       font-weight: bold; 
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      z-index: 1000;
+      animation: pulse 2s ease infinite;
+      color: #333;
     }
-    #timer.warning { background: #ffeb3b; }
-    #timer.danger { background: #f44336; color: white; }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    #timer.warning { 
+      background: linear-gradient(135deg, #ffeb3b 0%, #ffc107 100%);
+      color: #333;
+      animation: shake 0.5s ease infinite;
+    }
+    
+    #timer.danger { 
+      background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
+      color: white;
+      animation: shake 0.3s ease infinite;
+    }
+    
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+      
+      #timer {
+        top: 10px;
+        right: 10px;
+        padding: 10px 15px;
+      }
+      
+      #quiz-container {
+        padding: 20px;
+        border-radius: 15px;
+      }
+      
+      h1 {
+        margin-bottom: 20px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      #timer {
+        position: static;
+        margin: 0 auto 20px;
+        display: inline-block;
+      }
+      
+      h1 {
+        margin-top: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <h1>No Limits Tutorials Service ECON1005 FINALS PRACTICE MCQ</h1>
+  <h1>Economics 1005: Practice MCQ Quiz</h1>
   
   <div id="timer">Time: 30:00</div>
 
