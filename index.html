@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>No Limits Tutorial Service ECON1005 Final Exam Practice Quiz</title>
+  <title>No Limits Tutorial Service ECON1005 FINAL EXAM Practice Quiz</title>
   <style>
     * {
       margin: 0;
@@ -56,12 +56,6 @@
       justify-content: center;
       gap: 15px;
       flex-wrap: wrap;
-    }
-    
-    #logo {
-      height: clamp(40px, 8vw, 80px);
-      width: auto;
-      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
     }
     
     @keyframes fadeInDown {
@@ -275,23 +269,19 @@
       75% { transform: translateX(5px); }
     }
     
-    /* Responsive adjustments */
     @media (max-width: 768px) {
       body {
         padding: 10px;
       }
-      
       #timer {
         top: 10px;
         right: 10px;
         padding: 10px 15px;
       }
-      
       #quiz-container {
         padding: 20px;
         border-radius: 15px;
       }
-      
       h1 {
         margin-bottom: 20px;
       }
@@ -303,7 +293,6 @@
         margin: 0 auto 20px;
         display: inline-block;
       }
-      
       h1 {
         margin-top: 20px;
       }
@@ -312,427 +301,51 @@
 </head>
 <body>
 
-  <h1>
-    <span>No Limits Tutorials Service ECON1005 FINALS PRACTICE MCQ</span>
-  </h1>
+  <h1>No Limits Tutorials Service ECON1005 FINALS PRACTICE MCQ</h1>
   
   <div id="timer">Time: 30:00</div>
-
   <div id="quiz-container"></div>
 
   <script>
     const questions = [
-      {
-        q: "1. What would increase the margin of error?",
-        choices: [
-          "A. Decrease confidence level",
-          "B. None",
-          "C. Increase population standard deviation",
-          "D. Decrease population standard deviation"
-        ],
-        answer: 2
-      },
-      {
-        q: "2. A Ministry of Health survey divides Jamaica into 14 parishes. From each parish, 3 clinics are randomly selected. Then, 10 patients are randomly chosen from each selected clinic to participate in a national health study.",
-        choices: [
-          "A. Census",
-          "B. Stratified Random Sample",
-          "C. Simple Random Sample",
-          "D. Cluster Sample",
-          "E. Multistage Sample"
-        ],
-        answer: 4
-      },
-      {
-        q: "3. A university wants to collect data from every registered student in their system to assess the impact of online exams on GPA.",
-        choices: [
-          "A. Census",
-          "B. Stratified Random Sample",
-          "C. Simple Random Sample",
-          "D. Cluster Sample",
-          "E. Multistage Sample"
-        ],
-        answer: 0
-      },
-      {
-        q: "4. A research team classifies farmers based on the type of crops they grow (sugarcane, yam, banana, or coffee). They randomly select 20 farmers from each crop category for a study on climate change adaptation.",
-        choices: [
-          "A. Census",
-          "B. Stratified Random Sample",
-          "C. Simple Random Sample",
-          "D. Cluster Sample",
-          "E. Multistage Sample"
-        ],
-        answer: 1
-      },
-      {
-        q: "5. A government agency randomly selects 5 high schools across Jamaica and surveys all students in those schools about their views on mandatory national service.",
-        choices: [
-          "A. Census",
-          "B. Stratified Random Sample",
-          "C. Simple Random Sample",
-          "D. Cluster Sample",
-          "E. Multistage Sample"
-        ],
-        answer: 3
-      },
-      {
-        q: "6. A surveyor obtains a complete list of all small businesses registered in Jamaica. Using a random number generator, she selects 250 businesses for a study on financing and loan access.",
-        choices: [
-          "A. Census",
-          "B. Stratified Random Sample",
-          "C. Simple Random Sample",
-          "D. Cluster Sample",
-          "E. Multistage Sample"
-        ],
-        answer: 2
-      },
-      {
-        q: "7. Brandon owns a business that delivers fresh produce. The weekly revenue from sales is right-skewed, with a mean of $45,000 and a standard deviation of $5,200. If a random sample of 49 weeks is taken, the sampling distribution of the sample mean:",
-        choices: [
-          "A. is right skewed with mean $45,000 and standard deviation $5,200",
-          "B. is right skewed with mean $45,000 and standard deviation $742.86",
-          "C. is normal with mean $45,000 and standard deviation $5,200",
-          "D. is normal with mean $45,000 and standard deviation $742.86",
-          "E. cannot be determined using the given information."
-        ],
-        answer: 3
-      },
-      {
-        q: "8. National ID number used to identify individuals in a government database",
-        choices: [
-          "A. Nominal",
-          "B. Ordinal",
-          "C. Interval",
-          "D. Ratio"
-        ],
-        answer: 0
-      },
-      {
-        q: "9. Performance rating of athletes in a sports competition (Excellent, Good, Fair, Poor)",
-        choices: [
-          "A. Nominal",
-          "B. Ordinal",
-          "C. Interval",
-          "D. Ratio"
-        ],
-        answer: 1
-      },
-      {
-        q: "10. Number of years an employee has worked with a company",
-        choices: [
-          "A. Nominal",
-          "B. Ordinal",
-          "C. Interval",
-          "D. Ratio"
-        ],
-        answer: 3
-      },
-      {
-        q: "11. Random samples of size n were selected from a population with a known standard deviation. How is the standard deviation of the sampling distribution of the sample mean affected if the sample size is increased from 64 to 256?",
-        choices: [
-          "A. It is multiplied by 2",
-          "B. It is divided by 4",
-          "C. It is divided by 2",
-          "D. It remains the same",
-          "E. It is multiplied by 4"
-        ],
-        answer: 2
-      },
-      {
-        q: "12. The average number of patients seen daily at a medical clinic is 84, with a standard deviation of 10.2. You want to calculate the probability that a sample of 40 days will produce a mean greater than 87 patients.",
-        choices: [
-          "A. Probability Distribution",
-          "B. Sampling Distribution",
-          "C. Confidence Interval",
-          "D. Hypothesis Test",
-          "E. Sample Size Calculation"
-        ],
-        answer: 1
-      },
-      {
-        q: "13. The Ministry of Education believes that students today spend more time on mobile devices than the previous average of 4 hours daily. A study of 100 high school students is done to test whether today's average exceeds this.",
-        choices: [
-          "A. Probability Distribution",
-          "B. Sampling Distribution",
-          "C. Confidence Interval",
-          "D. Hypothesis Test",
-          "E. Sample Size Calculation"
-        ],
-        answer: 3
-      },
-      {
-        q: "14. The average commute time in Kingston is 38 minutes with a standard deviation of 6 minutes. You want to determine the probability that a randomly selected person commutes more than 42 minutes.",
-        choices: [
-          "A. Probability Distribution",
-          "B. Sampling Distribution",
-          "C. Confidence Interval",
-          "D. Hypothesis Test",
-          "E. Sample Size Calculation"
-        ],
-        answer: 0
-      },
-      {
-        q: "15. Which measures would be used to describe the income for nurses in Jamaica?",
-        choices: [
-          "A. Mean and Median",
-          "B. Median and IQR",
-          "C. IQR and Mode",
-          "D. Standard deviation and Mean"
-        ],
-        answer: 1
-      },
-      {
-        q: "16. A polling agency wants to estimate the proportion of Jamaicans who support a new energy policy. They want their estimate to be within ±2.5% of the true value with 95% confidence. They must decide how many people to survey.",
-        choices: [
-          "A. Probability Distribution",
-          "B. Sampling Distribution",
-          "C. Confidence Interval",
-          "D. Hypothesis Test",
-          "E. Sample Size Calculation"
-        ],
-        answer: 4
-      },
-      {
-        q: "17. Suppose, to create this estimate, Musk will allow an error of 3 percent with 90 percent confidence. What sample size should he use?",
-        choices: [
-          "A. 14",
-          "B. 55",
-          "C. 556",
-          "D. 737",
-          "E. 752"
-        ],
-        answer: 4
-      },
-      {
-        q: "18. According to the Inland Revenue Service, 60 percent of Jamaican companies pay no taxes at the end of a financial year. Suppose a research team took a random sample of 300 Jamaican companies. If the team wanted to determine the probability that the sample proportion was greater than 62 percent, the Z value (to 4 decimal places) to be used to calculate this probability is:",
-        choices: [
-          "A. −0.7071",
-          "B. −0.7137",
-          "C. 0.6200",
-          "D. 0.7071",
-          "E. 0.7137"
-        ],
-        answer: 3
-      },
-      {
-        q: "19. Cam‑Ron just began a new job as a sales representative in a very competitive company. The company policy dictates that for new sales representatives to be considered for permanent employment, they must, on average, close deals that are on average more than US$1000. It is also known that the distribution of deals is normal with a standard deviation of US$120. Suppose Cam‑Ron's probation period is coming to an end and the company wanted to determine if she should be made a permanent sales representative. Based on her performance, a sample of 16 of Cam-Ron's sales deals yielded an average of US$1080. If the company wanted to predict the true average of Cam‑Ron's sales deals within ±US$15, how many of her sales deals should they sample?",
-        choices: [
-          "A. 67",
-          "B. 173",
-          "C. 174",
-          "D. 245",
-          "E. 246"
-        ],
-        answer: 4
-      },
-      {
-        q: "20. Cam‑Ron just began a new job as a sales representative in a very competitive company. The company policy dictates that for new sales representatives to be considered for permanent employment, they must, on average, close deals that are on average more than US$1000. It is also known that the distribution of deals is normal with a standard deviation of US$120. Suppose Cam‑Ron's probation period is coming to an end and the company wanted to determine if she should be made a permanent sales representative. Based on her performance, a sample of 16 of Cam-Ron's sales deals yielded an average of US$1080. What would be the appropriate alternative hypothesis?",
-        choices: [
-          "A. Hₐ: x̄ > 1080",
-          "B. Hₐ: μ > 1000",
-          "C. Hₐ: μ₀ > 1000",
-          "D. Hₐ: μ₀ > 1080",
-          "E. Hₐ: x̄ > 1000"
-        ],
-        answer: 1
-      },
-      {
-        q: "21. The test statistic for the test is:",
-        choices: [
-          "A. z = −2.67",
-          "B. z = −0.67",
-          "C. z = 0.67",
-          "D. z = 2.67"
-        ],
-        answer: 3
-      },
-      {
-        q: "22. If the p‑value for yet another sample of 16 was 0.0317, the company should:",
-        choices: [
-          "A. not make Cam‑Ron a permanent member of the sales team because the null hypothesis was rejected.",
-          "B. not make Cam‑Ron a permanent member of the sales team because the null hypothesis was accepted.",
-          "C. make Cam‑Ron a permanent member of the sales team because the alternative hypothesis was accepted.",
-          "D. make Cam‑Ron a permanent member of the sales team because the null hypothesis was not rejected.",
-          "E. make Cam‑Ron a permanent member of the sales team because the null hypothesis was rejected."
-        ],
-        answer: 4
-      },
-      {
-        q: "23. Elon Musk's Space X programme is getting closer to allowing civilians to take a trip to Mars. To determine the interest in people wanting to visit Mars, Musk conducts a survey. From this survey of 763 adults, 329 stated that they would like to visit Mars. We would like to use the information to create an estimate for the true proportion of persons who would like to take a trip to Mars. p = ______",
-        choices: [
-          "A. 329",
-          "B. 0.43",
-          "C. 763",
-          "D. 1.96",
-          "E. unknown"
-        ],
-        answer: 4
-      },
-      {
-        q: "24. Elon Musk's Space X programme is getting closer to allowing civilians to take a trip to Mars. To determine the interest in people wanting to visit Mars, Musk conducts a survey. From this survey of 763 adults, 329 stated that they would like to visit Mars. We would like to use the information to create an estimate for the true proportion of persons who would like to take a trip to Mars. p̂ = ______",
-        choices: [
-          "A. 329",
-          "B. 0.43",
-          "C. 763",
-          "D. 1.96",
-          "E. unknown"
-        ],
-        answer: 1
-      },
-      {
-        q: "25. Elon Musk's Space X programme is getting closer to allowing civilians to take a trip to Mars. To determine the interest in people wanting to visit Mars, Musk conducts a survey. From this survey of 763 adults, 329 stated that they would like to visit Mars. We would like to use the information to create an estimate for the true proportion of persons who would like to take a trip to Mars. X = ______",
-        choices: [
-          "A. 329",
-          "B. 0.43",
-          "C. 763",
-          "D. 1.96"
-        ],
-        answer: 0
-      },
-      {
-        q: "26. Given the information above, which of the following validity requirements is violated?",
-        choices: [
-          "A. np ≥ 10 and n(1 − p) ≥ 10",
-          "B. np̂ ≥ 10 and n(1 − p̂) ≥ 10",
-          "C. The population is at least 20 times as large as the sample",
-          "D. More than one condition is violated",
-          "E. No condition is violated"
-        ],
-        answer: 4
-      },
-      {
-        q: "27. After some calculations, a statistician stated that the 95 percent confidence interval for average income for employees in a particular company lies between $100,000 and $400,000. Does this mean that:",
-        choices: [
-          "A. 95 percent of all the employees in the company earn between $100,000 and $400,000",
-          "B. If 100 confidence intervals are constructed using the same sample size, then 95 of them will include the population average",
-          "C. 95 percent of those in the sample used to create the confidence interval earn between $100,000 and $400,000",
-          "D. If 95 samples are taken, their average will be between $100,000 and $400,000",
-          "E. If 100 confidence intervals are constructed using the same sample size, then 95 of them will include the sample average"
-        ],
-        answer: 1
-      },
-      {
-        q: "28. Which graph represents the following scenario: The per capita GDP (rounded to the nearest $'000) for 15 randomly chosen countries.",
-        choices: [
-          "A. Histogram",
-          "B. Bar graph",
-          "C. Pie Chart",
-          "D. Boxplot",
-          "E. Stemplot"
-        ],
-        answer: 4
-      },
-      {
-        q: "29. Which graph represents the following scenario: A random sample of 60 students is taken, and each of their major/majors is recorded.",
-        choices: [
-          "A. Histogram",
-          "B. Bar graph",
-          "C. Pie Chart",
-          "D. Boxplot",
-          "E. Stemplot"
-        ],
-        answer: 1
-      },
-      {
-        q: "30. Which graph represents the following scenario: Dr Hamilton wants to determine what percentage of the class scored above 85% on the exam.",
-        choices: [
-          "A. Histogram",
-          "B. Ogive",
-          "C. Pie Chart",
-          "D. Boxplot",
-          "E. Stemplot"
-        ],
-        answer: 1
-      },
-      {
-        q: "31. A 95% confidence interval is to be constructed to estimate the proportion of Kingston adults who planned to attend a paid carnival event. Which of the following represents the value at the centre of the confidence interval?",
-        choices: [
-          "A. p",
-          "B. p̂ = 312 ÷ 1200",
-          "C. p̂ = 1200 ÷ 312",
-          "D. X = 312",
-          "E. n = 1200"
-        ],
-        answer: 1
-      },
-      {
-        q: "32. Which of the following gives the correct symbol and formula used to calculate the centre of the confidence interval?",
-        choices: [
-          "A. p = X ÷ n",
-          "B. p̂ = X ÷ n",
-          "C. p̂ = n ÷ X",
-          "D. p = n ÷ X",
-          "E. μ = X ÷ n"
-        ],
-        answer: 1
-      },
-      {
-        q: "33. What is the correct critical value used to construct a 95 percent confidence interval for a population proportion?",
-        choices: [
-          "A. z = 1.28",
-          "B. z = 1.645",
-          "C. z = 1.96",
-          "D. z = 2.33",
-          "E. z = 2.58"
-        ],
-        answer: 2
-      },
-      {
-        q: "34. Which formula is used to calculate the margin of error for a confidence interval for a population proportion?",
-        choices: [
-          "A. z × √( σ² ÷ n )",
-          "B. E = z × √( p̂(1 − p̂) ÷ n )",
-          "C. E = √( p̂ ÷ n )",
-          "D. E = z ÷ √n",
-          "E. E = p̂ ± z"
-        ],
-        answer: 1
-      },
-      {
-        q: "35. The confidence interval constructed in this question is used to estimate:",
-        choices: [
-          "A. The sample proportion of adults in Kingston",
-          "B. The population proportion of adults in Kingston",
-          "C. The population mean attendance",
-          "D. The probability of attending Carnival",
-          "E. The number of adults who attended Carnival"
-        ],
-        answer: 1
-      },
-      {
-        q: "36. The lower and upper bounds of the confidence interval represent:",
-        choices: [
-          "A. The range where 95 percent of the sample values lie",
-          "B. The range where the population mean must fall",
-          "C. The range of likely values for the true population proportion",
-          "D. The range of the sample size",
-          "E. The probability of attending Carnival"
-        ],
-        answer: 2
-      },
-      {
-        q: "37. The 95 percent confidence interval constructed from this survey applies to:",
-        choices: [
-          "A. Only the 1,200 adults in the sample",
-          "B. Only the 312 adults who said yes",
-          "C. The entire adult population of Kingston",
-          "D. Only Carnival attendees",
-          "E. Only paid events in April"
-        ],
-        answer: 2
-      },
-      {
-        q: "38. The Planning Institute of Jamaica (PIOJ) wants to determine the proportion of businesses that lost more than $1.5 million due to the COVID‑19 pandemic. What is the appropriate test?",
-        choices: [
-          "A. A right tail proportions test",
-          "B. A two‑tail means test",
-          "C. A right tail means test",
-          "D. A left tail proportions test",
-          "E. A left tail means test"
-        ],
-        answer: 0
-      }
+      { q: "1. What would increase the margin of error?", choices: ["A. Decrease confidence level","B. None","C. Increase population standard deviation","D. Decrease population standard deviation"], answer: 2 },
+      { q: "2. A Ministry of Health survey divides Jamaica into 14 parishes. From each parish, 3 clinics are randomly selected. Then, 10 patients are randomly chosen from each selected clinic to participate in a national health study.", choices: ["A. Census","B. Stratified Random Sample","C. Simple Random Sample","D. Cluster Sample","E. Multistage Sample"], answer: 4 },
+      { q: "3. A university wants to collect data from every registered student in their system to assess the impact of online exams on GPA.", choices: ["A. Census","B. Stratified Random Sample","C. Simple Random Sample","D. Cluster Sample","E. Multistage Sample"], answer: 0 },
+      { q: "4. A research team classifies farmers based on the type of crops they grow (sugarcane, yam, banana, or coffee). They randomly select 20 farmers from each crop category for a study on climate change adaptation.", choices: ["A. Census","B. Stratified Random Sample","C. Simple Random Sample","D. Cluster Sample","E. Multistage Sample"], answer: 1 },
+      { q: "5. A government agency randomly selects 5 high schools across Jamaica and surveys all students in those schools about their views on mandatory national service.", choices: ["A. Census","B. Stratified Random Sample","C. Simple Random Sample","D. Cluster Sample","E. Multistage Sample"], answer: 3 },
+      { q: "6. A surveyor obtains a complete list of all small businesses registered in Jamaica. Using a random number generator, she selects 250 businesses for a study on financing and loan access.", choices: ["A. Census","B. Stratified Random Sample","C. Simple Random Sample","D. Cluster Sample","E. Multistage Sample"], answer: 2 },
+      { q: "7. Brandon owns a business that delivers fresh produce. The weekly revenue from sales is right-skewed, with a mean of $45,000 and a standard deviation of $5,200. If a random sample of 49 weeks is taken, the sampling distribution of the sample mean:", choices: ["A. is right skewed with mean $45,000 and standard deviation $5,200","B. is right skewed with mean $45,000 and standard deviation $742.86","C. is normal with mean $45,000 and standard deviation $5,200","D. is normal with mean $45,000 and standard deviation $742.86","E. cannot be determined using the given information."], answer: 3 },
+      { q: "8. National ID number used to identify individuals in a government database", choices: ["A. Nominal","B. Ordinal","C. Interval","D. Ratio"], answer: 0 },
+      { q: "9. Performance rating of athletes in a sports competition (Excellent, Good, Fair, Poor)", choices: ["A. Nominal","B. Ordinal","C. Interval","D. Ratio"], answer: 1 },
+      { q: "10. Number of years an employee has worked with a company", choices: ["A. Nominal","B. Ordinal","C. Interval","D. Ratio"], answer: 3 },
+      { q: "11. Random samples of size n were selected from a population with a known standard deviation. How is the standard deviation of the sampling distribution of the sample mean affected if the sample size is increased from 64 to 256?", choices: ["A. It is multiplied by 2","B. It is divided by 4","C. It is divided by 2","D. It remains the same","E. It is multiplied by 4"], answer: 2 },
+      { q: "12. The average number of patients seen daily at a medical clinic is 84, with a standard deviation of 10.2. You want to calculate the probability that a sample of 40 days will produce a mean greater than 87 patients.", choices: ["A. Probability Distribution","B. Sampling Distribution","C. Confidence Interval","D. Hypothesis Test","E. Sample Size Calculation"], answer: 1 },
+      { q: "13. The Ministry of Education believes that students today spend more time on mobile devices than the previous average of 4 hours daily. A study of 100 high school students is done to test whether today's average exceeds this.", choices: ["A. Probability Distribution","B. Sampling Distribution","C. Confidence Interval","D. Hypothesis Test","E. Sample Size Calculation"], answer: 3 },
+      { q: "14. The average commute time in Kingston is 38 minutes with a standard deviation of 6 minutes. You want to determine the probability that a randomly selected person commutes more than 42 minutes.", choices: ["A. Probability Distribution","B. Sampling Distribution","C. Confidence Interval","D. Hypothesis Test","E. Sample Size Calculation"], answer: 0 },
+      { q: "15. Which measures would be used to describe the income for nurses in Jamaica?", choices: ["A. Mean and Median","B. Median and IQR","C. IQR and Mode","D. Standard deviation and Mean"], answer: 1 },
+      { q: "16. A polling agency wants to estimate the proportion of Jamaicans who support a new energy policy. They want their estimate to be within ±2.5% of the true value with 95% confidence. They must decide how many people to survey.", choices: ["A. Probability Distribution","B. Sampling Distribution","C. Confidence Interval","D. Hypothesis Test","E. Sample Size Calculation"], answer: 4 },
+      { q: "17. Suppose, to create this estimate, Musk will allow an error of 3 percent with 90 percent confidence. What sample size should he use?", choices: ["A. 14","B. 55","C. 556","D. 737","E. 752"], answer: 4 },
+      { q: "18. According to the Inland Revenue Service, 60 percent of Jamaican companies pay no taxes at the end of a financial year. Suppose a research team took a random sample of 300 Jamaican companies. If the team wanted to determine the probability that the sample proportion was greater than 62 percent, the Z value (to 4 decimal places) to be used to calculate this probability is:", choices: ["A. −0.7071","B. −0.7137","C. 0.6200","D. 0.7071","E. 0.7137"], answer: 3 },
+      { q: "19. Cam‑Ron just began a new job as a sales representative in a very competitive company. The company policy dictates that for new sales representatives to be considered for permanent employment, they must, on average, close deals that are on average more than US$1000. It is also known that the distribution of deals is normal with a standard deviation of US$120. Suppose Cam‑Ron's probation period is coming to an end and the company wanted to determine if she should be made a permanent sales representative. Based on her performance, a sample of 16 of Cam-Ron's sales deals yielded an average of US$1080. If the company wanted to predict the true average of Cam‑Ron's sales deals within ±US$15, how many of her sales deals should they sample?", choices: ["A. 67","B. 173","C. 174","D. 245","E. 246"], answer: 4 },
+      { q: "20. Cam‑Ron just began a new job as a sales representative in a very competitive company. The company policy dictates that for new sales representatives to be considered for permanent employment, they must, on average, close deals that are on average more than US$1000. It is also known that the distribution of deals is normal with a standard deviation of US$120. Suppose Cam‑Ron's probation period is coming to an end and the company wanted to determine if she should be made a permanent sales representative. Based on her performance, a sample of 16 of Cam-Ron's sales deals yielded an average of US$1080. What would be the appropriate alternative hypothesis?", choices: ["A. Hₐ: x̄ > 1080","B. Hₐ: μ > 1000","C. Hₐ: μ₀ > 1000","D. Hₐ: μ₀ > 1080","E. Hₐ: x̄ > 1000"], answer: 1 },
+      { q: "21. The test statistic for the test is:", choices: ["A. z = −2.67","B. z = −0.67","C. z = 0.67","D. z = 2.67"], answer: 3 },
+      { q: "22. If the p‑value for yet another sample of 16 was 0.0317, the company should:", choices: ["A. not make Cam‑Ron a permanent member of the sales team because the null hypothesis was rejected.","B. not make Cam‑Ron a permanent member of the sales team because the null hypothesis was accepted.","C. make Cam‑Ron a permanent member of the sales team because the alternative hypothesis was accepted.","D. make Cam‑Ron a permanent member of the sales team because the null hypothesis was not rejected.","E. make Cam‑Ron a permanent member of the sales team because the null hypothesis was rejected."], answer: 4 },
+      { q: "23. Elon Musk's Space X programme is getting closer to allowing civilians to take a trip to Mars. To determine the interest in people wanting to visit Mars, Musk conducts a survey. From this survey of 763 adults, 329 stated that they would like to visit Mars. We would like to use the information to create an estimate for the true proportion of persons who would like to take a trip to Mars. p = ______", choices: ["A. 329","B. 0.43","C. 763","D. 1.96","E. unknown"], answer: 4 },
+      { q: "24. Elon Musk's Space X programme is getting closer to allowing civilians to take a trip to Mars. To determine the interest in people wanting to visit Mars, Musk conducts a survey. From this survey of 763 adults, 329 stated that they would like to visit Mars. We would like to use the information to create an estimate for the true proportion of persons who would like to take a trip to Mars. p̂ = ______", choices: ["A. 329","B. 0.43","C. 763","D. 1.96","E. unknown"], answer: 1 },
+      { q: "25. Elon Musk's Space X programme is getting closer to allowing civilians to take a trip to Mars. To determine the interest in people wanting to visit Mars, Musk conducts a survey. From this survey of 763 adults, 329 stated that they would like to visit Mars. We would like to use the information to create an estimate for the true proportion of persons who would like to take a trip to Mars. X = ______", choices: ["A. 329","B. 0.43","C. 763","D. 1.96"], answer: 0 },
+      { q: "26. Given the information above, which of the following validity requirements is violated?", choices: ["A. np ≥ 10 and n(1 − p) ≥ 10","B. np̂ ≥ 10 and n(1 − p̂) ≥ 10","C. The population is at least 20 times as large as the sample","D. More than one condition is violated","E. No condition is violated"], answer: 4 },
+      { q: "27. After some calculations, a statistician stated that the 95 percent confidence interval for average income for employees in a particular company lies between $100,000 and $400,000. Does this mean that:", choices: ["A. 95 percent of all the employees in the company earn between $100,000 and $400,000","B. If 100 confidence intervals are constructed using the same sample size, then 95 of them will include the population average","C. 95 percent of those in the sample used to create the confidence interval earn between $100,000 and $400,000","D. If 95 samples are taken, their average will be between $100,000 and $400,000","E. If 100 confidence intervals are constructed using the same sample size, then 95 of them will include the sample average"], answer: 1 },
+      { q: "28. Which graph represents the following scenario: The per capita GDP (rounded to the nearest $'000) for 15 randomly chosen countries.", choices: ["A. Histogram","B. Bar graph","C. Pie Chart","D. Boxplot","E. Stemplot"], answer: 4 },
+      { q: "29. Which graph represents the following scenario: A random sample of 60 students is taken, and each of their major/majors is recorded.", choices: ["A. Histogram","B. Bar graph","C. Pie Chart","D. Boxplot","E. Stemplot"], answer: 1 },
+      { q: "30. Which graph represents the following scenario: Dr Hamilton wants to determine what percentage of the class scored above 85% on the exam.", choices: ["A. Histogram","B. Ogive","C. Pie Chart","D. Boxplot","E. Stemplot"], answer: 1 },
+      { q: "31. A 95% confidence interval is to be constructed to estimate the proportion of Kingston adults who planned to attend a paid carnival event. Which of the following represents the value at the centre of the confidence interval?", choices: ["A. p","B. p̂ = 312 ÷ 1200","C. p̂ = 1200 ÷ 312","D. X = 312","E. n = 1200"], answer: 1 },
+      { q: "32. Which of the following gives the correct symbol and formula used to calculate the centre of the confidence interval?", choices: ["A. p = X ÷ n","B. p̂ = X ÷ n","C. p̂ = n ÷ X","D. p = n ÷ X","E. μ = X ÷ n"], answer: 1 },
+      { q: "33. What is the correct critical value used to construct a 95 percent confidence interval for a population proportion?", choices: ["A. z = 1.28","B. z = 1.645","C. z = 1.96","D. z = 2.33","E. z = 2.58"], answer: 2 },
+      { q: "34. Which formula is used to calculate the margin of error for a confidence interval for a population proportion?", choices: ["A. z × √( σ² ÷ n )","B. E = z × √( p̂(1 − p̂) ÷ n )","C. E = √( p̂ ÷ n )","D. E = z ÷ √n","E. E = p̂ ± z"], answer: 1 },
+      { q: "35. The confidence interval constructed in this question is used to estimate:", choices: ["A. The sample proportion of adults in Kingston","B. The population proportion of adults in Kingston","C. The population mean attendance","D. The probability of attending Carnival","E. The number of adults who attended Carnival"], answer: 1 },
+      { q: "36. The lower and upper bounds of the confidence interval represent:", choices: ["A. The range where 95 percent of the sample values lie","B. The range where the population mean must fall","C. The range of likely values for the true population proportion","D. The range of the sample size","E. The probability of attending Carnival"], answer: 2 },
+      { q: "37. The 95 percent confidence interval constructed from this survey applies to:", choices: ["A. Only the 1,200 adults in the sample","B. Only the 312 adults who said yes","C. The entire adult population of Kingston","D. Only Carnival attendees","E. Only paid events in April"], answer: 2 },
+      { q: "38. The Planning Institute of Jamaica (PIOJ) wants to determine the proportion of businesses that lost more than $1.5 million due to the COVID‑19 pandemic. What is the appropriate test?", choices: ["A. A right tail proportions test","B. A two‑tail means test","C. A right tail means test","D. A left tail proportions test","E. A left tail means test"], answer: 0 }
     ];
     
     const backgroundGradients = [
@@ -746,28 +359,21 @@
       'linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%)',
       'linear-gradient(135deg, #ee9ca7 0%, #ffdde1 100%)',
       'linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%)',
-      'linear-gradient(135deg, #cc2b5e 0%, #753a88 100%)',
-      'linear-gradient(135deg, #42275a 0%, #734b6d 100%)',
-      'linear-gradient(135deg, #bdc3c7 0%, #2c3e50 100%)',
-      'linear-gradient(135deg, #de6262 0%, #ffb88c 100%)',
-      'linear-gradient(135deg, #06beb6 0%, #48b1bf 100%)',
-      'linear-gradient(135deg, #eb3349 0%, #f45c43 100%)',
+      'linear-gradient(135deg, #cc2b5e 0%, #753a88 100.)',
+      'linear-gradient(135deg, #42275a 0%, #734b6d 100.)',
+      'linear-gradient(135deg, #bdc3c7 0%, #2c3e50 100.)',
+      'linear-gradient(135deg, #de6262 0%, #ffb88c 100.)',
+      'linear-gradient(135deg, #06beb6 0%, #48b1bf 100.)',
+      'linear-gradient(135deg, #eb3349 0%, #f45c43 100.)',
       'linear-gradient(135deg, #dd5e89 0%, #f7bb97 100.)',
-      'linear-gradient(135deg, #56ab2f 0%, #a8e063 100%)',
-      'linear-gradient(135deg, #eecda3 0%, #ef629f 100%)',
-      'linear-gradient(135deg, #16222a 0%, #3a6073 100%)',
-      'linear-gradient(135deg, #c94b4b 0%, #4b134f 100.)',
-      'linear-gradient(135deg, #fc4a1a 0%, #f7b733 100%)',
-      'linear-gradient(135deg, #4776e6 0%, #8e54e9 100.)',
-      'linear-gradient(135deg, #e53935 0%, #e35d5b 100.)',
-      'linear-gradient(135deg, #005c97 0%, #363795 100.)',
-      'linear-gradient(135deg, #f857a6 0%, #ff5858 100.)',
-      'linear-gradient(135deg, #a73737 0%, #7a2828 100.)'
+      'linear-gradient(135deg, #56ab2f 0%, #a8e063 100.)',
+      'linear-gradient(135deg, #eecda3 0%, #ef629f 100.)',
+      'linear-gradient(135deg, #16222a 0%, #3a6073 100.)'
     ];
 
     let current = 0;
     let userAnswers = [];
-    let timeLeft = 1800; // 30 minutes in seconds
+    let timeLeft = 1800; // 30 minutes
     let timerInterval;
     let quizEnded = false;
 
@@ -775,6 +381,9 @@
     const timerDisplay = document.getElementById('timer');
 
     function startTimer() {
+      timerDisplay.style.display = 'block';
+      timeLeft = 1800;
+      quizEnded = false;
       timerInterval = setInterval(() => {
         if (quizEnded) {
           clearInterval(timerInterval);
@@ -860,44 +469,54 @@
       let score = 0;
       const resultDiv = document.createElement('div');
       resultDiv.id = 'result';
-      const resultList = document.createElement('ul');
 
+      const resultList = document.createElement('ul');
       questions.forEach((qObj, i) => {
         const li = document.createElement('li');
-        const correct = qObj.answer;
-        const user = userAnswers[i];
-        if (user === correct) {
+        const correctIndex = qObj.answer;
+        const userIndex = userAnswers[i];
+        let text;
+        if (userIndex === correctIndex) {
           score++;
-          li.innerHTML = `Q${i+1}: ✅ Correct`;
+          text = `Q${i+1}: ✅ Correct — Your answer: ${qObj.choices[userIndex]}`;
           li.className = 'correct-answer';
-        } else if (user === -1) {
-          li.innerHTML = `Q${i+1}: ⏱️ Not answered (Time's up!) — Correct answer: ${qObj.choices[correct]}`;
+        } else if (userIndex === -1) {
+          text = `Q${i+1}: ⏱️ Not answered — Correct answer: ${qObj.choices[correctIndex]}`;
           li.className = 'wrong-answer';
         } else {
-          li.innerHTML = `Q${i+1}: ❌ Wrong — Correct answer: ${qObj.choices[correct]}`;
+          text = `Q${i+1}: ❌ Wrong — Your answer: ${qObj.choices[userIndex]} | Correct: ${qObj.choices[correctIndex]}`;
           li.className = 'wrong-answer';
         }
+        li.textContent = text;
         resultList.appendChild(li);
       });
 
       resultDiv.innerHTML = `<h2>Results</h2><p>Your score: ${score} / ${questions.length}</p>`;
-
       const pct = score / questions.length;
       let emoji = '😐';
       if (pct === 1) emoji = '🎉';
       else if (pct >= 0.8) emoji = '🙂';
       else if (pct >= 0.5) emoji = '😐';
       else emoji = '😢';
-
       resultDiv.innerHTML += `<p>Your grade: ${emoji}</p>`;
       resultDiv.appendChild(resultList);
+
+      const restartBtn = document.createElement('button');
+      restartBtn.textContent = 'Restart Quiz';
+      restartBtn.onclick = () => {
+        userAnswers = [];
+        current = 0;
+        startTimer();
+        showQuestion(current);
+      };
+      resultDiv.appendChild(restartBtn);
+
       container.appendChild(resultDiv);
     }
 
-    // Start
+    // Start quiz
     startTimer();
     showQuestion(current);
-
   </script>
 
 </body>
