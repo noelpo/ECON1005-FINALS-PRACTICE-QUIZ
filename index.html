@@ -3,470 +3,476 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>No Limits Tutorial Service ECON1005 FINAL EXAM Practice Quiz</title>
+  <title>No Limits Tutorial Service — ECON1005 Final Exam Assessment</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      --navy:       #0a1f44;
+      --navy-mid:   #122b5e;
+      --navy-light: #1a3a7a;
+      --navy-pale:  #e8edf7;
+      --white:      #ffffff;
+      --off-white:  #f4f6fb;
+      --border:     #c8d2e8;
+      --muted:      #5a6e99;
+      --correct:    #0a5c36;
+      --correct-bg: #e6f4ed;
+      --wrong:      #7f1d1d;
+      --wrong-bg:   #fde8e8;
+      --skip:       #78350f;
+      --skip-bg:    #fef3e2;
     }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--navy);
       min-height: 100vh;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      background-attachment: fixed;
-      padding: 20px;
-      position: relative;
-      overflow-x: hidden;
-      transition: background 0.8s ease;
+      color: var(--navy);
     }
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background:
-        radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(252, 70, 107, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 40% 20%, rgba(99, 102, 241, 0.2) 0%, transparent 50%);
-      animation: gradientShift 15s ease infinite;
-      pointer-events: none;
-    }
-    @keyframes gradientShift {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.8; transform: scale(1.1); }
-    }
-    h1 {
+
+    /* ── Header ── */
+    #site-header {
+      background: var(--navy);
+      padding: 20px 24px 16px;
       text-align: center;
-      color: white;
-      font-size: clamp(1.2rem, 3vw, 2rem);
-      margin-bottom: 30px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-      animation: fadeInDown 0.8s ease;
-      position: relative;
-      z-index: 1;
+      border-bottom: 4px solid var(--white);
     }
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    #quiz-container {
-      max-width: 800px;
-      margin: 0 auto;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      padding: clamp(20px, 5vw, 40px);
-      border-radius: 20px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-      animation: fadeInUp 0.8s ease;
-      position: relative;
-      z-index: 1;
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .question { display: none; }
-    .question.active {
-      display: block;
-      animation: slideIn 0.5s ease;
-    }
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateX(20px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-    .question h2 {
-      color: #333;
-      font-size: clamp(1rem, 3vw, 1.3rem);
-      margin-bottom: 20px;
-      line-height: 1.6;
-    }
-    .answers {
-      list-style: none;
-      padding: 0;
-    }
-    .answers li {
-      margin: 12px 0;
-      transition: transform 0.2s ease;
-    }
-    .answers li:hover {
-      transform: translateX(5px);
-    }
-    .answers label {
-      display: block;
-      padding: 15px;
-      background: #f8f9fa;
-      border: 2px solid #e9ecef;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-size: clamp(0.9rem, 2vw, 1rem);
-    }
-    .answers label:hover {
-      background: #e7f3ff;
-      border-color: #667eea;
-      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
-    }
-    .answers input[type="radio"]:checked + label,
-    .answers label:has(input[type="radio"]:checked) {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      border-color: #667eea;
-      font-weight: bold;
-    }
-    .answers input[type="radio"] {
-      margin-right: 10px;
-    }
-    button {
-      margin-top: 20px;
-      padding: 12px 30px;
-      font-size: clamp(0.9rem, 2vw, 1.1rem);
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-    }
-    button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
-    }
-    button:active {
-      transform: translateY(0);
-    }
-    button:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-    .nav-buttons {
-      display: flex;
-      gap: 10px;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .nav-buttons button {
-      flex: 1;
-      min-width: 100px;
-    }
-    .arrow-btn {
+    .header-inner {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
-    #result {
-      text-align: center;
+    .logo-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
-    #result h2 {
-      color: #333;
-      margin-bottom: 20px;
-      font-size: clamp(1.5rem, 4vw, 2rem);
+    .logo-icon svg { width: 28px; height: 28px; }
+    .header-text { text-align: left; }
+    .brand-name {
+      font-family: 'Playfair Display', serif;
+      color: var(--white);
+      font-size: clamp(1.1rem, 3vw, 1.55rem);
+      line-height: 1.2;
+      letter-spacing: 0.01em;
     }
-    #result p {
-      font-size: clamp(1.1rem, 3vw, 1.5rem);
-      margin: 15px 0;
-      color: #555;
+    .brand-sub {
+      color: rgba(255,255,255,0.75);
+      font-size: clamp(0.8rem, 1.8vw, 0.95rem);
+      margin-top: 2px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
     }
-    #result ul {
+    .contact-bar {
+      margin-top: 10px;
+      display: inline-block;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 20px;
+      padding: 5px 18px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.8);
+      letter-spacing: 0.03em;
+    }
+    .contact-bar a {
+      color: var(--white);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    /* ── Main wrapper ── */
+    #wrapper {
+      max-width: 820px;
+      margin: 28px auto 48px;
+      padding: 0 16px;
+    }
+
+    /* ── Status bar ── */
+    #status-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--white);
+      border-radius: 10px;
+      padding: 11px 20px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 16px rgba(10,31,68,0.18);
+    }
+    #progress-text { font-size: 13px; color: var(--muted); font-weight: 500; }
+    #timer-label {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--navy);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.06em;
+    }
+    #timer-label.warn   { color: #b45309; }
+    #timer-label.danger { color: #b91c1c; }
+
+    .progress-track {
+      height: 5px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 3px;
+      margin-bottom: 18px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--white);
+      border-radius: 3px;
+      transition: width 0.35s ease;
+    }
+
+    /* ── Scenario box ── */
+    .scenario-box {
+      background: var(--navy-pale);
+      border-left: 4px solid var(--navy-light);
+      border-radius: 0 10px 10px 0;
+      padding: 13px 18px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      color: var(--navy);
+      line-height: 1.65;
+    }
+    .sc-label {
+      display: block;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--navy-light);
+      margin-bottom: 5px;
+    }
+
+    /* ── Question card ── */
+    .q-card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 24px 24px 20px;
+      box-shadow: 0 4px 24px rgba(10,31,68,0.15);
+    }
+    .q-text {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.65;
+      margin-bottom: 18px;
+    }
+    .choices { display: flex; flex-direction: column; gap: 10px; }
+
+    .choice-btn {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 16px;
+      background: var(--off-white);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      cursor: pointer;
       text-align: left;
-      max-width: 600px;
-      margin: 20px auto;
+      font-size: 14px;
+      font-family: 'DM Sans', sans-serif;
+      color: var(--navy);
+      line-height: 1.5;
+      transition: border-color 0.15s, background 0.15s, transform 0.1s;
+      width: 100%;
     }
-    #result li {
-      padding: 12px;
-      margin: 8px 0;
+    .choice-btn:hover {
+      border-color: var(--navy-light);
+      background: var(--navy-pale);
+      transform: translateX(3px);
+    }
+    .choice-btn.selected {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: var(--white);
+      font-weight: 600;
+    }
+    .choice-letter {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+      margin-top: 1px;
+    }
+    .choice-btn.selected .choice-letter {
+      background: rgba(255,255,255,0.2);
+      color: var(--white);
+    }
+
+    /* ── Navigation ── */
+    .nav {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .nav button {
+      flex: 1;
+      padding: 11px 20px;
       border-radius: 8px;
-      background: #f8f9fa;
-      font-size: clamp(0.85rem, 2vw, 1rem);
+      font-size: 14px;
+      font-weight: 600;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+      border: 2px solid var(--white);
+      background: transparent;
+      color: var(--white);
     }
-    .correct-answer {
-      color: #28a745;
-      font-weight: bold;
-      border-left: 4px solid #28a745;
+    .nav button:hover { background: rgba(255,255,255,0.15); }
+    .nav button:active { transform: scale(0.98); }
+    .nav button.primary {
+      background: var(--white);
+      color: var(--navy);
+      border-color: var(--white);
     }
-    .wrong-answer {
-      color: #dc3545;
-      border-left: 4px solid #dc3545;
+    .nav button.primary:hover { background: var(--navy-pale); }
+    .nav button:disabled { opacity: 0.3; cursor: not-allowed; transform: none; }
+
+    /* ── Results ── */
+    .result-header {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 30px 24px;
+      text-align: center;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 24px rgba(10,31,68,0.15);
     }
-    #timer {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      padding: 15px 25px;
-      border-radius: 15px;
-      font-size: clamp(1rem, 3vw, 1.2rem);
-      font-weight: bold;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-      z-index: 1000;
-      animation: pulse 2s ease infinite;
-      color: #333;
+    .result-header .score {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px;
+      color: var(--navy);
     }
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+    .result-header .grade {
+      font-size: 18px;
+      color: var(--muted);
+      margin-top: 6px;
+      font-weight: 500;
     }
-    #timer.warning {
-      background: linear-gradient(135deg, #ffeb3b 0%, #ffc107 100%);
-      color: #333;
-      animation: shake 0.5s ease infinite;
+    .result-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+    .result-item {
+      padding: 11px 16px;
+      border-radius: 10px;
+      font-size: 13px;
+      line-height: 1.55;
+      border-left: 4px solid;
     }
-    #timer.danger {
-      background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
-      color: white;
-      animation: shake 0.3s ease infinite;
+    .result-item.ok    { border-color: var(--correct); color: var(--correct); background: var(--correct-bg); }
+    .result-item.wrong { border-color: var(--wrong);   color: var(--wrong);   background: var(--wrong-bg); }
+    .result-item.skip  { border-color: var(--skip);    color: var(--skip);    background: var(--skip-bg); }
+
+    .restart-btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      background: var(--white);
+      color: var(--navy);
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+      transition: background 0.15s;
     }
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      25% { transform: translateX(-5px); }
-      75% { transform: translateX(5px); }
+    .restart-btn:hover { background: var(--navy-pale); }
+
+    /* ── Footer ── */
+    #site-footer {
+      text-align: center;
+      padding: 20px 16px 32px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
     }
-    @media (max-width: 768px) {
-      body { padding: 10px; }
-      #timer { top: 10px; right: 10px; padding: 10px 15px; }
-      #quiz-container { padding: 20px; border-radius: 15px; }
-      h1 { margin-bottom: 20px; }
-    }
-    @media (max-width: 480px) {
-      #timer { position: static; margin: 0 auto 20px; display: inline-block; }
-      h1 { margin-top: 20px; }
+    #site-footer a { color: rgba(255,255,255,0.75); text-decoration: none; }
+
+    @media (max-width: 520px) {
+      .q-card { padding: 18px 16px; }
+      .nav button { padding: 11px 12px; font-size: 13px; }
+      #status-bar { padding: 10px 14px; }
+      .header-text { text-align: center; }
     }
   </style>
 </head>
 <body>
 
-  <h1>No Limits Tutorials Service ECON1005 FINALS PRACTICE MCQ</h1>
+  <div id="site-header">
+    <div class="header-inner">
+      <div class="logo-icon">
+        <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="14" cy="14" r="13" fill="#0a1f44"/>
+          <path d="M8 20 L14 8 L20 20" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="10" y1="16.5" x2="18" y2="16.5" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="header-text">
+        <div class="brand-name">No Limits Tutorial Service</div>
+        <div class="brand-sub">ECON1005 &nbsp;·&nbsp; Final Exam Assessment</div>
+      </div>
+    </div>
+    <div>
+      <div class="contact-bar">Contact us: <a href="tel:18765692703">1 (876) 569-2703</a></div>
+    </div>
+  </div>
 
-  <div id="timer">Time: 30:00</div>
-  <div id="quiz-container"></div>
+  <div id="wrapper">
+    <div id="status-bar">
+      <span id="progress-text">Question 1 of 45</span>
+      <span id="timer-label">30:00</span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:2%"></div></div>
+    <div id="quiz-body"></div>
+  </div>
+
+  <div id="site-footer">
+    &copy; 2025 No Limits Tutorial Service &nbsp;|&nbsp; <a href="tel:18765692703">1 (876) 569-2703</a>
+  </div>
 
   <script>
-    const questions = [
-      { q: "1. What would increase the margin of error?", choices: ["A. Decrease confidence level","B. None","C. Increase population standard deviation","D. Decrease population standard deviation"], answer: 2 },
-      { q: "2. A Ministry of Health survey divides Jamaica into 14 parishes. From each parish, 3 clinics are randomly selected. Then, 10 patients are randomly chosen from each selected clinic to participate in a national health study.", choices: ["A. Census","B. Stratified Random Sample","C. Simple Random Sample","D. Cluster Sample","E. Multistage Sample"], answer: 4 },
-      { q: "3. A university wants to collect data from every registered student in their system to assess the impact of online exams on GPA.", choices: ["A. Census","B. Stratified Random Sample","C. Simple Random Sample","D. Cluster Sample","E. Multistage Sample"], answer: 0 },
-      { q: "4. A research team classifies farmers based on the type of crops they grow (sugarcane, yam, banana, or coffee). They randomly select 20 farmers from each crop category for a study on climate change adaptation.", choices: ["A. Census","B. Stratified Random Sample","C. Simple Random Sample","D. Cluster Sample","E. Multistage Sample"], answer: 1 },
-      { q: "5. A government agency randomly selects 5 high schools across Jamaica and surveys all students in those schools about their views on mandatory national service.", choices: ["A. Census","B. Stratified Random Sample","C. Simple Random Sample","D. Cluster Sample","E. Multistage Sample"], answer: 3 },
-      { q: "6. A surveyor obtains a complete list of all small businesses registered in Jamaica. Using a random number generator, she selects 250 businesses for a study on financing and loan access.", choices: ["A. Census","B. Stratified Random Sample","C. Simple Random Sample","D. Cluster Sample","E. Multistage Sample"], answer: 2 },
-      { q: "7. Brandon owns a business that delivers fresh produce. The weekly revenue from sales is right-skewed, with a mean of $45,000 and a standard deviation of $5,200. If a random sample of 49 weeks is taken, the sampling distribution of the sample mean:", choices: ["A. is right skewed with mean $45,000 and standard deviation $5,200","B. is right skewed with mean $45,000 and standard deviation $742.86","C. is normal with mean $45,000 and standard deviation $5,200","D. is normal with mean $45,000 and standard deviation $742.86","E. cannot be determined using the given information."], answer: 3 },
-      { q: "8. National ID number used to identify individuals in a government database", choices: ["A. Nominal","B. Ordinal","C. Interval","D. Ratio"], answer: 0 },
-      { q: "9. Performance rating of athletes in a sports competition (Excellent, Good, Fair, Poor)", choices: ["A. Nominal","B. Ordinal","C. Interval","D. Ratio"], answer: 1 },
-      { q: "10. Number of years an employee has worked with a company", choices: ["A. Nominal","B. Ordinal","C. Interval","D. Ratio"], answer: 3 },
-      { q: "11. Random samples of size n were selected from a population with a known standard deviation. How is the standard deviation of the sampling distribution of the sample mean affected if the sample size is increased from 64 to 256?", choices: ["A. It is multiplied by 2","B. It is divided by 4","C. It is divided by 2","D. It remains the same","E. It is multiplied by 4"], answer: 2 },
-      { q: "12. The average number of patients seen daily at a medical clinic is 84, with a standard deviation of 10.2. You want to calculate the probability that a sample of 40 days will produce a mean greater than 87 patients.", choices: ["A. Probability Distribution","B. Sampling Distribution","C. Confidence Interval","D. Hypothesis Test","E. Sample Size Calculation"], answer: 1 },
-      { q: "13. The Ministry of Education believes that students today spend more time on mobile devices than the previous average of 4 hours daily. A study of 100 high school students is done to test whether today's average exceeds this.", choices: ["A. Probability Distribution","B. Sampling Distribution","C. Confidence Interval","D. Hypothesis Test","E. Sample Size Calculation"], answer: 3 },
-      { q: "14. The average commute time in Kingston is 38 minutes with a standard deviation of 6 minutes. You want to determine the probability that a randomly selected person commutes more than 42 minutes.", choices: ["A. Probability Distribution","B. Sampling Distribution","C. Confidence Interval","D. Hypothesis Test","E. Sample Size Calculation"], answer: 0 },
-      { q: "15. Which measures would be used to describe the income for nurses in Jamaica?", choices: ["A. Mean and Median","B. Median and IQR","C. IQR and Mode","D. Standard deviation and Mean"], answer: 1 },
-      { q: "16. A polling agency wants to estimate the proportion of Jamaicans who support a new energy policy. They want their estimate to be within ±2.5% of the true value with 95% confidence. They must decide how many people to survey.", choices: ["A. Probability Distribution","B. Sampling Distribution","C. Confidence Interval","D. Hypothesis Test","E. Sample Size Calculation"], answer: 4 },
-      { q: "17. Suppose, to create this estimate, Musk will allow an error of 3 percent with 90 percent confidence. What sample size should he use?", choices: ["A. 14","B. 55","C. 556","D. 737","E. 752"], answer: 4 },
-      { q: "18. According to the Inland Revenue Service, 60 percent of Jamaican companies pay no taxes at the end of a financial year. Suppose a research team took a random sample of 300 Jamaican companies. If the team wanted to determine the probability that the sample proportion was greater than 62 percent, the Z value (to 4 decimal places) to be used to calculate this probability is:", choices: ["A. −0.7071","B. −0.7137","C. 0.6200","D. 0.7071","E. 0.7137"], answer: 3 },
-      { q: "19. Cam‑Ron just began a new job as a sales representative in a very competitive company. The company policy dictates that for new sales representatives to be considered for permanent employment, they must, on average, close deals that are on average more than US$1000. It is also known that the distribution of deals is normal with a standard deviation of US$120. Suppose Cam‑Ron's probation period is coming to an end and the company wanted to determine if she should be made a permanent sales representative. Based on her performance, a sample of 16 of Cam-Ron's sales deals yielded an average of US$1080. If the company wanted to predict the true average of Cam's sales deals within ±US$15, how many of her sales deals should they sample?", choices: ["A. 67","B. 173","C. 174","D. 245","E. 246"], answer: 4 },
-      { q: "20. Cam‑Ron's probation period is coming to an end and the company wanted to determine if she should be made a permanent sales representative. Based on a sample of 16 deals which yielded an average of US$1080. What would be the appropriate alternative hypothesis?", choices: ["A. Hₐ: x̄ > 1080","B. Hₐ: μ > 1000","C. Hₐ: μ₀ > 1000","D. Hₐ: μ₀ > 1080","E. Hₐ: x̄ > 1000"], answer: 1 },
-      { q: "21. The test statistic for the test is:", choices: ["A. z = −2.67","B. z = −0.67","C. z = 0.67","D. z = 2.67"], answer: 3 },
-      { q: "22. If the p‑value for yet another sample of 16 was 0.0317, the company should:", choices: ["A. not make Cam‑Ron a permanent member of the sales team because the null hypothesis was rejected.","B. not make Cam‑Ron a permanent member of the sales team because the null hypothesis was accepted.","C. make Cam‑Ron a permanent member of the sales team because the alternative hypothesis was accepted.","D. make Cam‑Ron a permanent member of the sales team because the null hypothesis was not rejected.","E. make Cam‑Ron a permanent member of the sales team because the null hypothesis was rejected."], answer: 4 },
-      { q: "23. In a survey of 763 adults, 329 said they would be interested in a trip to Mars. To estimate the true proportion wanting to visit Mars, p = _____.", choices: ["A. 329","B. 0.43","C. 763","D. 1.96","E. unknown"], answer: 4 },
-      { q: "24. In the same survey, p̂ = _____.", choices: ["A. 329","B. 0.43","C. 763","D. 1.96","E. unknown"], answer: 1 },
-      { q: "25. In the same survey, X = _____.", choices: ["A. 329","B. 0.43","C. 763","D. 1.96"], answer: 0 },
-      { q: "26. Given the information above, which validity requirement is violated?", choices: ["A. np ≥ 10 and n(1 − p) ≥ 10","B. np̂ ≥ 10 and n(1 − p̂) ≥ 10","C. The population is at least 20 times as large as the sample","D. More than one condition is violated","E. No condition is violated"], answer: 4 },
-      { q: "27. A 95% confidence interval for company employee income was calculated to be $100,000 to $400,000. This means:", choices: ["A. 95% of all employees earn between $100,000 and $400,000","B. If 100 CI’s are constructed using same sample size, then 95 will include the population mean","C. 95% of sample earn between $100,000 and $400,000","D. If 95 samples are taken, their average will be between $100,000 and $400,000","E. If 100 CI’s are constructed same sample size, then 95 will include the sample average"], answer: 1 },
-      { q: "28. Which graph represents: per‑capita GDP (rounded to nearest $’000) for 15 countries?", choices: ["A. Histogram","B. Bar graph","C. Pie Chart","D. Boxplot","E. Stemplot"], answer: 4 },
-      { q: "29. Which graph represents: a random sample of 60 students’ majors?"
-
-, choices: ["A. Histogram","B. Bar graph","C. Pie Chart","D. Boxplot","E. Stemplot"], answer: 1 },
-      { q: "30. Which graph represents: percentage of class scoring above 85% on exam?", choices: ["A. Histogram","B. Ogive","C. Pie Chart","D. Boxplot","E. Stemplot"], answer: 1 },
-      { q: "31. For a survey of 1,200 adults where 312 say they plan to attend a paid carnival event, the centre of the 95% confidence interval is:", choices: ["A. p","B. p̂ = 312 ÷ 1200","C. p̂ = 1200 ÷ 312","D. X = 312","E. n = 1200"], answer: 1 },
-      { q: "32. The correct symbol and formula for the centre of the confidence interval is:", choices: ["A. p = X ÷ n","B. p̂ = X ÷ n","C. p̂ = n ÷ X","D. p = n ÷ X","E. μ = X ÷ n"], answer: 1 },
-      { q: "33. The correct critical value for a 95% confidence interval (population proportion) is:", choices: ["A. z = 1.28","B. z = 1.645","C. z = 1.96","D. z = 2.33","E. z = 2.58"], answer: 2 },
-      { q: "34. The formula for margin of error for a population proportion is:", choices: ["A. z × √( σ² ÷ n )","B. E = z × √( p̂(1 − p̂) ÷ n )","C. E = √( p̂ ÷ n )","D. E = z ÷ √n","E. E = p̂ ± z"], answer: 1 },
-      { q: "35. The confidence interval estimates:", choices: ["A. The sample proportion","B. The population proportion","C. The population mean attendance","D. The probability of attending Carnival","E. The number of adults who attended Carnival"], answer: 1 },
-      { q: "36. The lower and upper bounds of the confidence interval represent:", choices: ["A. The range where 95% of sample values lie","B. Range where population mean must fall","C. The range of likely values for the true population proportion","D. The range of the sample size","E. The probability of attending Carnival"], answer: 2 },
-      { q: "37. The 95% confidence interval applies to:", choices: ["A. Only the 1,200 sampled adults","B. Only the 312 who said yes","C. The entire adult population of Kingston","D. Only Carnival attendees","E. Only paid events in April"], answer: 2 },
-      { q: "38. The Planning Institute of Jamaica (PIOJ) wants to determine the proportion of businesses that lost more than $1.5 million due to COVID‑19. What is the appropriate test?", choices: ["A. A right tail proportions test","B. A two‑tail means test","C. A right tail means test","D. A left tail proportions test","E. A left tail means test"], answer: 0 },
-      { q: "39. The best graphic method to represent how respondents feel when they listen to music (scale 1–5) is a:", choices: ["A. Histogram","B. Bar chart","C. Pie chart","D. Stem and leaf plot"], answer: 1 },
-      { q: "40. Concluding that most persons aged 13–25 enjoyed Reggae music (from your sample) is an example of:", choices: ["A. A parameter","B. A statistic","C. A census","D. Inference","E. Sampling"], answer: 3 },
-      { q: "41. The sampling method used (asking volunteers in public spaces) is:", choices: ["A. Simple random sampling","B. Stratified random sampling","C. Cluster sampling","D. Multistage sampling","E. Voluntary sampling"], answer: 4 },
-      { q: "42. Highest level of education is an example of a/an:", choices: ["A. Nominal variable","B. Ordinal variable","C. Continuous variable","D. Interval variable","E. Ratio variable"], answer: 1 },
-      { q: "43. The group‑type (student / full‑time worker / etc.) is an example of a/an:", choices: ["A. Nominal variable","B. Ordinal variable","C. Continuous variable","D. Interval variable","E. Ratio variable"], answer: 0 },
-      { q: "44. The survey scenario described is an example of:", choices: ["A. Anecdotal evidence","B. An observation","C. An experiment","D. Continuous data","E. Parameters"], answer: 1 },
-      { q: "45. To show the percentage of persons earning < $1.5 million per annum, the best graph is a:", choices: ["A. Histogram","B. Bar chart","C. Pie chart","D. More‑than cumulative percentage ogive"], answer: 3 }
+    const Q = [
+      {q:"1. What would increase the margin of error?",choices:["Decrease confidence level","None","Increase population standard deviation","Decrease population standard deviation"],ans:2},
+      {scenario:"A Ministry of Health survey divides Jamaica into 14 parishes. From each parish, 3 clinics are randomly selected. Then, 10 patients are randomly chosen from each selected clinic to participate in a national health study.",q:"2. Identify the sampling method used.",choices:["Census","Stratified Random Sample","Simple Random Sample","Cluster Sample","Multistage Sample"],ans:4},
+      {scenario:"A university wants to collect data from every registered student in their system to assess the impact of online exams on GPA.",q:"3. Identify the data collection method used.",choices:["Census","Stratified Random Sample","Simple Random Sample","Cluster Sample","Multistage Sample"],ans:0},
+      {scenario:"A research team classifies farmers based on the type of crops they grow (sugarcane, yam, banana, or coffee). They randomly select 20 farmers from each crop category for a study on climate change adaptation.",q:"4. Identify the sampling method used.",choices:["Census","Stratified Random Sample","Simple Random Sample","Cluster Sample","Multistage Sample"],ans:1},
+      {scenario:"A government agency randomly selects 5 high schools across Jamaica and surveys all students in those schools about their views on mandatory national service.",q:"5. Identify the sampling method used.",choices:["Census","Stratified Random Sample","Simple Random Sample","Cluster Sample","Multistage Sample"],ans:3},
+      {scenario:"A surveyor obtains a complete list of all small businesses registered in Jamaica. Using a random number generator, she selects 250 businesses for a study on financing and loan access.",q:"6. Identify the sampling method used.",choices:["Census","Stratified Random Sample","Simple Random Sample","Cluster Sample","Multistage Sample"],ans:2},
+      {scenario:"Brandon owns a business that delivers fresh produce. The weekly revenue from sales is right-skewed, with a mean of $45,000 and a standard deviation of $5,200. A random sample of 49 weeks is taken.",q:"7. What can be said about the sampling distribution of the sample mean?",choices:["Right skewed, mean $45,000, SD $5,200","Right skewed, mean $45,000, SD $742.86","Normal, mean $45,000, SD $5,200","Normal, mean $45,000, SD $742.86","Cannot be determined"],ans:3},
+      {q:"8. What level of measurement is a National ID number used to identify individuals in a government database?",choices:["Nominal","Ordinal","Interval","Ratio"],ans:0},
+      {q:"9. What level of measurement is the performance rating of athletes (Excellent, Good, Fair, Poor)?",choices:["Nominal","Ordinal","Interval","Ratio"],ans:1},
+      {q:"10. What level of measurement is the number of years an employee has worked with a company?",choices:["Nominal","Ordinal","Interval","Ratio"],ans:3},
+      {scenario:"Random samples of size n are selected from a population with a known standard deviation.",q:"11. How is the standard deviation of the sampling distribution affected if sample size increases from 64 to 256?",choices:["Multiplied by 2","Divided by 4","Divided by 2","Remains the same","Multiplied by 4"],ans:2},
+      {scenario:"The average number of patients seen daily at a medical clinic is 84, with a standard deviation of 10.2.",q:"12. You want to calculate the probability that a sample of 40 days will produce a mean greater than 87. What statistical procedure is this?",choices:["Probability Distribution","Sampling Distribution","Confidence Interval","Hypothesis Test","Sample Size Calculation"],ans:1},
+      {scenario:"The Ministry of Education believes students today spend more time on mobile devices than the previous average of 4 hours daily. A study of 100 high school students is conducted to test whether today's average exceeds this.",q:"13. What statistical procedure is being described?",choices:["Probability Distribution","Sampling Distribution","Confidence Interval","Hypothesis Test","Sample Size Calculation"],ans:3},
+      {scenario:"The average commute time in Kingston is 38 minutes with a standard deviation of 6 minutes.",q:"14. You want to determine the probability that a randomly selected person commutes more than 42 minutes. What statistical procedure is this?",choices:["Probability Distribution","Sampling Distribution","Confidence Interval","Hypothesis Test","Sample Size Calculation"],ans:0},
+      {q:"15. Which measures would be most appropriate to describe the income for nurses in Jamaica?",choices:["Mean and Median","Median and IQR","IQR and Mode","Standard deviation and Mean"],ans:1},
+      {scenario:"A polling agency wants to estimate the proportion of Jamaicans who support a new energy policy within ±2.5% of the true value with 95% confidence.",q:"16. What statistical procedure must they use to determine how many people to survey?",choices:["Probability Distribution","Sampling Distribution","Confidence Interval","Hypothesis Test","Sample Size Calculation"],ans:4},
+      {scenario:"Elon Musk wants to estimate a proportion, allowing an error of no more than 3% with 90% confidence.",q:"17. What sample size should he use?",choices:["14","55","556","737","752"],ans:4},
+      {scenario:"According to the Inland Revenue Service, 60% of Jamaican companies pay no taxes at the end of a financial year. A random sample of 300 Jamaican companies is taken.",q:"18. What is the Z value (to 4 decimal places) for finding the probability that the sample proportion exceeds 62%?",choices:["−0.7071","−0.7137","0.6200","0.7071","0.7137"],ans:3},
+      {scenario:"Cam-Ron is a new sales representative at a competitive company. Company policy requires new reps to average more than US$1,000 per deal to be considered for permanent employment. The distribution of deals is normal with a standard deviation of US$120. A sample of 16 of Cam-Ron's deals yielded an average of US$1,080.",q:"19. If the company wants to predict the true average of Cam-Ron's sales deals within ±US$15, how many deals should they sample? (Use 95% confidence.)",choices:["67","173","174","245","246"],ans:4},
+      {scenario:"Cam-Ron's probation is ending. Company policy requires new reps to average more than US$1,000 per deal to be made permanent. A sample of 16 deals yielded an average of US$1,080.",q:"20. What is the appropriate alternative hypothesis?",choices:["Hₐ: x̄ > 1080","Hₐ: μ > 1000","Hₐ: μ₀ > 1000","Hₐ: μ₀ > 1080","Hₐ: x̄ > 1000"],ans:1},
+      {scenario:"Cam-Ron scenario continued. SD = US$120, n = 16, x̄ = US$1,080, H₀: μ = 1,000.",q:"21. What is the test statistic?",choices:["z = −2.67","z = −0.67","z = 0.67","z = 2.67"],ans:3},
+      {scenario:"Cam-Ron scenario continued. For another sample of 16, the p-value was 0.0317. (Use α = 0.05.)",q:"22. What should the company conclude?",choices:["Not make Cam-Ron permanent — null hypothesis was rejected","Not make Cam-Ron permanent — null hypothesis was accepted","Make Cam-Ron permanent — alternative hypothesis was accepted","Make Cam-Ron permanent — null hypothesis was not rejected","Make Cam-Ron permanent — null hypothesis was rejected"],ans:4},
+      {scenario:"In a survey of 763 adults, 329 said they would be interested in a trip to Mars.",q:"23. To estimate the true proportion wanting to visit Mars, p = _____.",choices:["329","0.43","763","1.96","Unknown"],ans:4},
+      {scenario:"In a survey of 763 adults, 329 said they would be interested in a trip to Mars.",q:"24. In this survey, p̂ = _____.",choices:["329","0.43","763","1.96","Unknown"],ans:1},
+      {scenario:"In a survey of 763 adults, 329 said they would be interested in a trip to Mars.",q:"25. In this survey, X = _____.",choices:["329","0.43","763","1.96"],ans:0},
+      {scenario:"In a survey of 763 adults, 329 said they would be interested in a trip to Mars. (p̂ = 0.43, n = 763.)",q:"26. Which validity requirement for a confidence interval for a proportion is violated, if any?",choices:["np ≥ 10 and n(1 − p) ≥ 10","np̂ ≥ 10 and n(1 − p̂) ≥ 10","The population is at least 20 times as large as the sample","More than one condition is violated","No condition is violated"],ans:4},
+      {q:"27. A 95% confidence interval for company employee income was calculated to be $100,000 to $400,000. What is the correct interpretation?",choices:["95% of all employees earn between $100,000 and $400,000","If 100 CIs are constructed with the same sample size, 95 will include the population mean","95% of the sample earns between $100,000 and $400,000","If 95 samples are taken, their average will be between $100,000 and $400,000","If 100 CIs are constructed, 95 will include the sample average"],ans:1},
+      {q:"28. Which graph is best for representing per-capita GDP (rounded to nearest $'000) for 15 countries?",choices:["Histogram","Bar graph","Pie Chart","Boxplot","Stemplot"],ans:4},
+      {q:"29. Which graph is best for representing a random sample of 60 students' majors?",choices:["Histogram","Bar graph","Pie Chart","Boxplot","Stemplot"],ans:1},
+      {q:"30. Which graph is best for representing the percentage of a class scoring above 85% on an exam?",choices:["Histogram","Ogive","Pie Chart","Boxplot","Stemplot"],ans:1},
+      {scenario:"A survey of 1,200 adults found that 312 plan to attend a paid carnival event.",q:"31. What is the centre of the 95% confidence interval for the proportion?",choices:["p","p̂ = 312 ÷ 1200","p̂ = 1200 ÷ 312","X = 312","n = 1200"],ans:1},
+      {q:"32. What is the correct symbol and formula for the centre of a confidence interval for a proportion?",choices:["p = X ÷ n","p̂ = X ÷ n","p̂ = n ÷ X","p = n ÷ X","μ = X ÷ n"],ans:1},
+      {q:"33. What is the correct critical value for a 95% confidence interval for a population proportion?",choices:["z = 1.28","z = 1.645","z = 1.96","z = 2.33","z = 2.58"],ans:2},
+      {q:"34. What is the correct formula for the margin of error for a population proportion?",choices:["z × √(σ² ÷ n)","E = z × √(p̂(1 − p̂) ÷ n)","E = √(p̂ ÷ n)","E = z ÷ √n","E = p̂ ± z"],ans:1},
+      {q:"35. A confidence interval for a proportion estimates:",choices:["The sample proportion","The population proportion","The population mean attendance","The probability of attending Carnival","The number of adults who attended Carnival"],ans:1},
+      {q:"36. The lower and upper bounds of a confidence interval represent:",choices:["The range where 95% of sample values lie","The range where the population mean must fall","The range of likely values for the true population proportion","The range of the sample size","The probability of attending Carnival"],ans:2},
+      {scenario:"A survey of 1,200 adults found that 312 plan to attend a paid carnival event. A 95% confidence interval is constructed.",q:"37. What population does this 95% confidence interval apply to?",choices:["Only the 1,200 sampled adults","Only the 312 who said yes","The entire adult population of Kingston","Only Carnival attendees","Only paid events in April"],ans:2},
+      {scenario:"The Planning Institute of Jamaica (PIOJ) wants to determine the proportion of businesses that lost more than $1.5 million due to COVID-19.",q:"38. What is the appropriate hypothesis test?",choices:["A right tail proportions test","A two-tail means test","A right tail means test","A left tail proportions test","A left tail means test"],ans:0},
+      {scenario:"A researcher surveys persons about how they feel when they listen to music, using a scale of 1 to 5.",q:"39. What is the best graphic method to represent this data?",choices:["Histogram","Bar chart","Pie chart","Stem and leaf plot"],ans:1},
+      {scenario:"A student researcher surveyed a sample of persons aged 13–25 and concluded that most enjoyed Reggae music.",q:"40. What is this conclusion an example of?",choices:["A parameter","A statistic","A census","Inference","Sampling"],ans:3},
+      {scenario:"The researcher asked volunteers in public spaces to participate in the music survey.",q:"41. What is the sampling method used?",choices:["Simple random sampling","Stratified random sampling","Cluster sampling","Multistage sampling","Voluntary sampling"],ans:4},
+      {q:"42. Highest level of education is an example of a/an:",choices:["Nominal variable","Ordinal variable","Continuous variable","Interval variable","Ratio variable"],ans:1},
+      {q:"43. Group type (student / full-time worker / unemployed, etc.) is an example of a/an:",choices:["Nominal variable","Ordinal variable","Continuous variable","Interval variable","Ratio variable"],ans:0},
+      {scenario:"A student researcher visited public spaces and asked volunteers aged 13–25 questions about their music preferences and lifestyle.",q:"44. This survey is best described as an example of:",choices:["Anecdotal evidence","An observation","An experiment","Continuous data","Parameters"],ans:1},
+      {q:"45. To show the percentage of persons earning less than $1.5 million per annum, the best graph is a:",choices:["Histogram","Bar chart","Pie chart","Less-than cumulative percentage ogive"],ans:3}
     ];
 
-    const backgroundGradients = [
-      'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-      'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-      'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
-      'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
-      'linear-gradient(135deg, #30cfd0 0%, #330867 100%)',
-      'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
-      'linear-gradient(135deg, #ff9a56 0%, #ff6a88 100.)',
-      'linear-gradient(135deg, #ee9ca7 0%, #ffdde1 100.)',
-      'linear-gradient(135deg, #2193b0 0%, #6dd5ed 100.)'
-    ];
+    const LETTERS=["A","B","C","D","E"];
+    let current=0,userAns=[],timeLeft=1800,timerInt=null,ended=false;
 
-    let current = 0;
-    let userAnswers = [];
-    let timeLeft, timerInterval;
-    let quizEnded = false;
+    function fmt(s){const m=Math.floor(s/60),sec=s%60;return m+":"+(sec<10?"0":"")+sec;}
 
-    const container = document.getElementById('quiz-container');
-    const timerDisplay = document.getElementById('timer');
-
-    function startTimer() {
-      timeLeft = 1800; // 30 minutes
-      quizEnded = false;
-      timerDisplay.style.display = 'block';
-      timerDisplay.className = '';
-      updateTimerDisplay();
-      clearInterval(timerInterval);
-      timerInterval = setInterval(() => {
-        if (quizEnded) {
-          clearInterval(timerInterval);
-          return;
-        }
-        timeLeft--;
-        updateTimerDisplay();
-        if (timeLeft <= 300 && timeLeft > 60) {
-          timerDisplay.className = 'warning';
-        } else if (timeLeft <= 60) {
-          timerDisplay.className = 'danger';
-        }
-        if (timeLeft <= 0) {
-          clearInterval(timerInterval);
-          quizEnded = true;
-          autoSubmitQuiz();
-        }
-      }, 1000);
+    function tick(){
+      timeLeft--;
+      const lbl=document.getElementById("timer-label");
+      lbl.textContent=fmt(timeLeft);
+      if(timeLeft<=300&&timeLeft>60)lbl.className="warn";
+      else if(timeLeft<=60)lbl.className="danger";
+      if(timeLeft<=0){clearInterval(timerInt);ended=true;for(let i=0;i<Q.length;i++){if(userAns[i]===undefined)userAns[i]=-1;}showResult();}
     }
 
-    function updateTimerDisplay() {
-      const minutes = Math.floor(timeLeft / 60);
-      const seconds = timeLeft % 60;
-      timerDisplay.textContent = `Time: ${minutes}:${seconds.toString().padStart(2, '0')}`;
+    function updateProgress(idx){
+      document.getElementById("progress-text").textContent="Question "+(idx+1)+" of "+Q.length;
+      document.getElementById("progress-fill").style.width=((idx+1)/Q.length*100)+"%";
     }
 
-    function autoSubmitQuiz() {
-      for (let i = 0; i < questions.length; i++) {
-        if (userAnswers[i] === undefined) {
-          userAnswers[i] = -1;
-        }
-      }
-      showResult();
-    }
-
-    function showQuestion(index) {
-      if (quizEnded) return;
-      document.body.style.background =
-        backgroundGradients[index % backgroundGradients.length];
-      container.innerHTML = '';
-      const qObj = questions[index];
-      const div = document.createElement('div');
-      div.className = 'question active';
-      div.innerHTML = `
-        <h2>${qObj.q}</h2>
-        <ul class="answers">
-          ${qObj.choices.map((c, i) => `
-            <li>
-              <label>
-                <input type="radio" name="choice" value="${i}"
-                  ${userAnswers[index] === i ? 'checked' : ''}>
-                ${c}
-              </label>
-            </li>
-          `).join('')}
-        </ul>
-        <div class="nav-buttons">
-          <button id="prev" class="arrow-btn" ${index === 0 ? 'disabled' : ''}>← Previous</button>
-          <button id="next" class="arrow-btn">${index === questions.length - 1 ? 'Finish Quiz' : 'Next →'}</button>
-        </div>
-      `;
-      container.appendChild(div);
-
-      if (index > 0) {
-        document.getElementById('prev').onclick = () => {
-          const sel = container.querySelector('input[name="choice"]:checked');
-          if (sel) userAnswers[index] = parseInt(sel.value, 10);
-          current--;
-          showQuestion(current);
-        };
-      }
-      document.getElementById('next').onclick = () => {
-        const sel = container.querySelector('input[name="choice"]:checked');
-        if (!sel) {
-          alert('Please select an answer!');
-          return;
-        }
-        userAnswers[index] = parseInt(sel.value, 10);
-        if (index + 1 < questions.length) {
-          current++;
-          showQuestion(current);
-        } else {
-          quizEnded = true;
-          clearInterval(timerInterval);
-          showResult();
-        }
-      };
-    }
-
-    function showResult() {
-      timerDisplay.style.display = 'none';
-      container.innerHTML = '';
-      let score = 0;
-      const resultDiv = document.createElement('div');
-      resultDiv.id = 'result';
-
-      const resultList = document.createElement('ul');
-      questions.forEach((qObj, i) => {
-        const li = document.createElement('li');
-        const correct = qObj.answer;
-        const user = userAnswers[i];
-        if (user === correct) {
-          score++;
-          li.textContent = `Q${i+1}: ✅ Correct — Your answer: ${qObj.choices[user]}`;
-          li.className = 'correct-answer';
-        } else if (user === -1) {
-          li.textContent = `Q${i+1}: ⏱️ Not answered — Correct: ${qObj.choices[correct]}`;
-          li.className = 'wrong-answer';
-        } else {
-          li.textContent = `Q${i+1}: ❌ Wrong — Your: ${qObj.choices[user]} | Correct: ${qObj.choices[correct]}`;
-          li.className = 'wrong-answer';
-        }
-        resultList.appendChild(li);
+    function renderQ(idx){
+      if(ended)return;
+      updateProgress(idx);
+      const qo=Q[idx];
+      let html="";
+      if(qo.scenario){html+=`<div class="scenario-box"><span class="sc-label">Scenario</span>${qo.scenario}</div>`;}
+      html+=`<div class="q-card"><div class="q-text">${qo.q}</div><div class="choices">`;
+      qo.choices.forEach((c,i)=>{
+        const sel=(userAns[idx]===i)?" selected":"";
+        html+=`<button class="choice-btn${sel}" onclick="pick(${idx},${i})"><span class="choice-letter">${LETTERS[i]}</span><span>${c}</span></button>`;
       });
-
-      resultDiv.innerHTML = `<h2>Results</h2><p>Your score: ${score} / ${questions.length}</p>`;
-      const pct = score / questions.length;
-      let emoji = '😐';
-      if (pct === 1) emoji = '🎉';
-      else if (pct >= 0.8) emoji = '🙂';
-      else if (pct >= 0.5) emoji = '😐';
-      else emoji = '😢';
-      resultDiv.innerHTML += `<p>Your grade: ${emoji}</p>`;
-      resultDiv.appendChild(resultList);
-
-      const restartBtn = document.createElement('button');
-      restartBtn.textContent = 'Restart Quiz';
-      restartBtn.onclick = () => {
-        userAnswers = [];
-        current = 0;
-        startTimer();
-        showQuestion(current);
-      };
-      resultDiv.appendChild(restartBtn);
-
-      container.appendChild(resultDiv);
+      html+=`</div></div><div class="nav">`;
+      html+=`<button onclick="go(-1)" ${idx===0?"disabled":""}>← Previous</button>`;
+      html+=idx<Q.length-1?`<button class="primary" onclick="go(1)">Next →</button>`:`<button class="primary" onclick="finish()">Submit Quiz</button>`;
+      html+=`</div>`;
+      document.getElementById("quiz-body").innerHTML=html;
     }
 
-    // Start
-    startTimer();
-    showQuestion(current);
-  </script>
+    function pick(idx,val){userAns[idx]=val;renderQ(idx);}
 
+    function go(dir){
+      if(dir===1&&userAns[current]===undefined){alert("Please select an answer before continuing.");return;}
+      current+=dir;renderQ(current);
+    }
+
+    function finish(){
+      if(userAns[current]===undefined){alert("Please select an answer before submitting.");return;}
+      ended=true;clearInterval(timerInt);showResult();
+    }
+
+    function showResult(){
+      document.getElementById("status-bar").style.display="none";
+      document.querySelector(".progress-track").style.display="none";
+      let score=0;
+      Q.forEach((_,i)=>{if(userAns[i]===Q[i].ans)score++;});
+      const pct=score/Q.length;
+      const grade=pct>=0.9?"Outstanding! 🎉":pct>=0.7?"Good work! 👍":pct>=0.5?"Keep going! 📚":"More practice needed 💪";
+      let html=`<div class="result-header"><div class="score">${score} / ${Q.length}</div><div class="grade">${grade}</div></div><div class="result-list">`;
+      Q.forEach((qo,i)=>{
+        const u=userAns[i],c=qo.ans;
+        if(u===c)html+=`<div class="result-item ok">Q${i+1} ✓ Correct — ${qo.choices[u]}</div>`;
+        else if(u===-1||u===undefined)html+=`<div class="result-item skip">Q${i+1} — Not answered | Correct: ${qo.choices[c]}</div>`;
+        else html+=`<div class="result-item wrong">Q${i+1} ✗ Your answer: ${qo.choices[u]} | Correct: ${qo.choices[c]}</div>`;
+      });
+      html+=`</div><button class="restart-btn" onclick="restart()">Restart Quiz</button>`;
+      document.getElementById("quiz-body").innerHTML=html;
+    }
+
+    function restart(){
+      userAns=[];current=0;ended=false;timeLeft=1800;
+      document.getElementById("status-bar").style.display="flex";
+      document.querySelector(".progress-track").style.display="block";
+      const lbl=document.getElementById("timer-label");
+      lbl.textContent="30:00";lbl.className="";
+      clearInterval(timerInt);timerInt=setInterval(tick,1000);
+      renderQ(0);
+    }
+
+    timerInt=setInterval(tick,1000);
+    renderQ(0);
+  </script>
 </body>
 </html>
